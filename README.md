@@ -1,2 +1,2 @@
 # django-ecommerce
-An ecommerce website using Django framework.
+An ecommerce website using the Django framework.

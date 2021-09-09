@@ -3,7 +3,7 @@ from .models import Product, Category, DiscountCode
 
 
 # A class that displays Product in a table form
-class ProductInline(admin.TabularInline):
+class ProductInline(admin.StackedInline):
     model = Product
 
     # Don't add any extra blank form for new Reviews
@@ -22,7 +22,7 @@ class CategoryAdmin(admin.ModelAdmin):
     # Add filters for state and stars
     # list_filter = ['stars', 'state']
 
-    # Make the Category list searchable by name
+    # Make the Category list searchable by title
     search_fields = ['title']
 
     # We don't want ids showing up

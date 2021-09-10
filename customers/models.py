@@ -16,7 +16,7 @@ class Customer(User):
     gender = models.BooleanField(default=True, choices=gender_type, null=False, blank=False)
 
     def __str__(self):
-        return self.first_name + " " + self.last_name
+        return self.username
 
     class Meta:
         verbose_name_plural = 'Customers'

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Category, DiscountCode
+from .models import Product, Category
 
 
 # A class that displays Product in a table form
@@ -27,8 +27,3 @@ class CategoryAdmin(admin.ModelAdmin):
 
     # We don't want ids showing up
     exclude = ('id',)
-
-
-@admin.register(DiscountCode)
-class DiscountCodeAdmin(admin.ModelAdmin):
-    pass

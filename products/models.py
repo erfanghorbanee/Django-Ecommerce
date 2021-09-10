@@ -21,6 +21,9 @@ class Product(models.Model):
     rate = models.PositiveIntegerField(default=0, validators=[MaxValueValidator(5), MinValueValidator(0)])
     counts = models.PositiveIntegerField()
 
+    # Product views
+    views = models.PositiveIntegerField(default=0)
+
     UNAVAILABLE = False
     AVAILABLE = True
     status_type = (
@@ -35,15 +38,8 @@ class Product(models.Model):
         return self.title
 
     def get_absolute_url(self):
+        # Each time user visits product
+        self.views += 1
         return reverse("products:product-detail", kwargs={'id': self.id})
 
-
-class DiscountCode(models.Model):
-    code = models.CharField(max_length=10)
-    amount = models.FloatField()
-    start_date = models.DateTimeField()
-    expire_date = models.DateTimeField()
-
-    def __str__(self):
-        return "%" + self.amount
 

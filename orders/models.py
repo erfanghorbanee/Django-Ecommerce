@@ -3,23 +3,23 @@ from customers.models import Customer
 from products.models import Product
 
 
-class Order(models.Model):
+class OrderProduct(models.Model):
     user = models.ForeignKey(Customer, on_delete=models.CASCADE, blank=False, null=False)
-    code = models.CharField(max_length=15, blank=True, null=True)
-    items = models.ManyToManyField(Product)
-    ordered_date = models.DateTimeField()
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
 
     def __str__(self):
-        return self.user.username
+        return f"{self.quantity} of {self.product.title}"
 
 
-class OrderHistory(models.Model):
-    order = models.OneToOneField(Order, on_delete=models.CASCADE, blank=False, null=False)
+class Order(models.Model):
+    # Cart model
+    user = models.ForeignKey(Customer, on_delete=models.CASCADE, blank=False, null=False)
+    ref_code = models.CharField(max_length=10, blank=True, null=True)
+    products = models.ManyToManyField(OrderProduct)
+    ordered_date = models.DateTimeField()
     being_delivered = models.BooleanField(default=False)
     received = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.order.code
-
-    class Meta:
-        verbose_name_plural = 'Order histories'
+        return f"{self.user.username}: {self.ref_code}"

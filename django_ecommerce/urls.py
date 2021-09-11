@@ -18,7 +18,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('product/', include('products.urls')),
+    path('', include('products.urls')),  # our main page will be in products app.
     path('customer/', include('customers.urls')),
     path('order/', include('orders.urls')),
 ]

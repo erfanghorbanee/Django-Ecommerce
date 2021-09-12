@@ -1,4 +1,4 @@
-<!--users/templates/base.html-->
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en" dir="rtl">
@@ -15,19 +15,10 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     {% endblock %}
 
-
-
+    <!-- static CSS -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
     <style>
-        html *
-        {
-           font-family: Shabnam !important;
-        }
-
-        a {
-            text-decoration:none;
-        }
-
         {% block style %}
         {% endblock %}
     </style>

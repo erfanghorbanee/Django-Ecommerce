@@ -5,7 +5,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 class Customer(User):
     phone = PhoneNumberField(unique=True, null=False, blank=False)
-    image = models.ImageField(upload_to="customers_image", blank=True, null=True)
+    image = models.ImageField(upload_to="static/img/customers_image", blank=True, null=True)
 
     MALE = False
     FEMALE = True

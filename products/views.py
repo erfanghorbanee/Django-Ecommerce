@@ -6,6 +6,7 @@ def home_view(request):
     categories = Category.objects.all()
     print(Category.objects.all())
     print(Category.objects.prefetch_related('products').all())
+    print(request.user)
 
     context = {
         'categories': categories,

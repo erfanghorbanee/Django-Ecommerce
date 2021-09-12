@@ -50,9 +50,18 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">فروشگاه</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">دسته&zwnj;بندی</a>
-          </li>
+
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            دسته&zwnj;بندی
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+      </li>
+
           <li class="nav-item">
             <a class="nav-link" href="#">درباره ما</a>
           </li>
@@ -61,6 +70,29 @@
           <input class="form-control me-2" type="search" placeholder="جستجو" aria-label="جستجو">
           <button class="btn btn-outline-primary" type="submit">جستجو</button>
         </form>
+
+        {% if user.is_authenticated %}
+          <div class="dropdown">
+                <a class="btn  dropdown" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img class="Avatar " alt="Avatar " src="">
+                </a>
+
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li>
+                        <p class="dropdown-header ">Signed in as <b></b></p>
+                    </li>
+                    <li><a class="dropdown-item " href="">داشبورد</a></li>
+                    <li><a class="dropdown-item " href="">پروفایل</a></li>
+                    <li><a class="dropdown-item " href="">سبد</a></li>
+                    <li>
+                        <hr class="dropdown-divider ">
+                    </li>
+                    <li><a class="dropdown-item text-danger " href="">خروج</a>
+                    </li>
+                </ul>
+            </div>
+          {% endif %}
+
       </div>
     </div>
   </nav>

@@ -1,9 +1,20 @@
 from django.db import models
-from django.contrib.auth.models import User
 from phonenumber_field.modelfields import PhoneNumberField
+from django.contrib.auth.models import AbstractUser
+from django.utils.translation import ugettext_lazy as _
+
+from .managers import CustomUserManager
 
 
-class Customer(User):
+class Customer(AbstractUser):
+    username = None
+    email = models.EmailField(_('email address'), unique=True)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+
+    objects = CustomUserManager()
+
     phone = PhoneNumberField(unique=True, null=False, blank=False)
     image = models.ImageField(upload_to="static/img/customers_image", blank=True, null=True)
 
@@ -16,10 +27,10 @@ class Customer(User):
     gender = models.BooleanField(default=True, choices=gender_type, null=False, blank=False)
 
     def __str__(self):
-        return self.username
+        return self.email
 
-    class Meta:
-        verbose_name_plural = 'Customers'
+    # class Meta:
+    #     verbose_name_plural = 'Customers'
 
 
 class Address(models.Model):
@@ -41,4 +52,4 @@ class DiscountCode(models.Model):
     expire_date = models.DateTimeField()
 
     def __str__(self):
-        return self.amount + "%"
+        return self.amount + '%'

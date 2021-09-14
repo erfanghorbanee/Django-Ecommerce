@@ -24,6 +24,15 @@
           font-size: 3.5rem;
         }
       }
+
+      .dropdown-item text-danger {
+          background: none!important;
+          border: none;
+          padding: 0!important;
+          color: #069;
+          text-decoration: underline;
+          cursor: pointer;
+      }
 {% endblock %}
 
 {% block content %}
@@ -65,14 +74,16 @@
           <li class="nav-item">
             <a class="nav-link" href="#">درباره ما</a>
           </li>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="جستجو" aria-label="جستجو">
+            <button class="btn btn-outline-primary" type="submit">جستجو</button>
+          </form>
+
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="جستجو" aria-label="جستجو">
-          <button class="btn btn-outline-primary" type="submit">جستجو</button>
-        </form>
+
 
         {% if user.is_authenticated %}
-          <div class="dropdown">
+          <div class="dropstart">
                 <a class="btn  dropdown" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                     <img class="Avatar " alt="Avatar " src="">
                 </a>
@@ -87,8 +98,16 @@
                     <li>
                         <hr class="dropdown-divider ">
                     </li>
-                    <li><a class="dropdown-item text-danger " href="">خروج</a>
+                    <li>
+                        <form method="post" action="{% url 'account_logout' %}">
+                          {% csrf_token %}
+                          {% if redirect_field_value %}
+                          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                          {% endif %}
+                          <button class="dropdown-item text-danger" type="submit">خروج</button>
+                        </form>
                     </li>
+
                 </ul>
             </div>
           {% endif %}

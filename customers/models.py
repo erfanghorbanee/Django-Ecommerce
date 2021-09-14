@@ -15,7 +15,7 @@ class Customer(AbstractUser):
 
     objects = CustomUserManager()
 
-    phone = PhoneNumberField(unique=True, null=False, blank=False)
+    phone = PhoneNumberField(null=False, blank=False)
     image = models.ImageField(upload_to="static/img/customers_image", blank=True, null=True)
 
     MALE = False

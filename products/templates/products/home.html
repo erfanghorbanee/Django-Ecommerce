@@ -11,7 +11,7 @@
 
 
 {% block style %}
-      .bd-placeholder-img {
+    .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
         -webkit-user-select: none;
@@ -19,20 +19,32 @@
         user-select: none;
       }
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
+    @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
         }
       }
 
-      .dropdown-item text-danger {
-          background: none!important;
-          border: none;
-          padding: 0!important;
-          color: #069;
-          text-decoration: underline;
-          cursor: pointer;
+    .dropdown-item text-danger {
+        background: none!important;
+        border: none;
+        padding: 0!important;
+        color: #069;
+        text-decoration: underline;
+        cursor: pointer;
       }
+
+    .Avatar {
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        margin-right: 5px;
+    }
+
+    .login {
+        margin-right: 25px;
+        margin-left:  5px;
+    }
 {% endblock %}
 
 {% block content %}
@@ -70,27 +82,25 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
       </li>
-
           <li class="nav-item">
-            <a class="nav-link" href="#">درباره ما</a>
+              <a class="nav-link" href="#">درباره ما</a>
           </li>
+      </ul>
+
           <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="جستجو" aria-label="جستجو">
             <button class="btn btn-outline-primary" type="submit">جستجو</button>
           </form>
 
-        </ul>
-
-
         {% if user.is_authenticated %}
           <div class="dropstart">
                 <a class="btn  dropdown" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img class="Avatar " alt="Avatar " src="">
+                    <img class="Avatar " alt="Avatar " src="static/img/home/profile.png">
                 </a>
 
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <li>
-                        <p class="dropdown-header ">Signed in as <b></b></p>
+                        <p class="dropdown-header"><b>{{ user }}</b></p>
                     </li>
                     <li><a class="dropdown-item " href="">داشبورد</a></li>
                     <li><a class="dropdown-item " href="">پروفایل</a></li>
@@ -110,6 +120,8 @@
 
                 </ul>
             </div>
+          {% else %}
+            <a class="login link-light" href="">ورود</a>
           {% endif %}
 
       </div>
@@ -127,35 +139,30 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+        <img src="static/img/home/email.jpg" alt="image" style="width: 100%; height: 100%;">
 
         <div class="container">
-          <div class="carousel-caption text-start">
-            <h1>عنوان المثال.</h1>
-            <p>تشير الدراسات الإحصائية حسب الجمعية الأمريكية للغات بأن الإقبال على العربية زاد %126 في الولايات المتحدة الأمريكية وحدها بين عامي 2002 و2009م.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">سجل اليوم</a></p>
+          <div class="carousel-caption text-start text-dark">
+            <h1>اطلاع رسانی</h1>
+            <p>برای دریافت اخبار جدید ترین محصولات کلیک کنید.</p>
           </div>
         </div>
       </div>
       <div class="carousel-item">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+       <img src="static/img/home/banner.jpg" alt="image" style="width: 100%; height: 100%;">
 
         <div class="container">
           <div class="carousel-caption">
-            <h1>عنوان مثال آخر.</h1>
-            <p>حسب المجلس الثقافي البريطاني فإن تعليم الإنجليزية داخل بريطانيا يسهم في تعزيز اقتصادها بما يتجاوز ملياري جنيه سنوياً، كما أنه وفر أكثر من 26 ألف وظيفة.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">أعرف أكثر</a></p>
+            <h1></h1>
+            <p></p>
           </div>
         </div>
       </div>
       <div class="carousel-item">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-
+        <img src="static/img/home/Books-Banner.jpg" alt="Books-Banner" style="width: 100%; height: 100%;">
         <div class="container">
-          <div class="carousel-caption text-end">
-            <h1>واحد أكثر لقياس جيد.</h1>
-            <p>الإحصاءات لحجم الاستثمار اللغوي خارج بريطانيا تتفاوت من سنة لأخرى إلا أن المدير التنفيذي للمجلس الثقافي البريطاني إدي بايرز يرى أن استثمار تعليم الإنجليزية في الخارج لا يحسب على المستوى المالي فحسب بل على المستوى السياسي أيضاً.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">تصفح المعرض</a></p>
+          <div class="carousel-caption text-start text">
+            <h1>محبوب ترین کتاب ها</h1>
           </div>
         </div>
       </div>
@@ -182,25 +189,25 @@
       <div class="col-lg-4">
         <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
 
-        <h2>عنوان</h2>
-        <p>تذكر دائماً أن الحاسوب لا يمتلك ذكاءً، ولكنه يكتسب الذكاء الاصطناعي من خلال ثلاثة عناصر وظيفية رئيسة، هي: القدرة على التحليل، والقدرة على التأليف، والاستدلال المنطقي.</p>
-        <p><a class="btn btn-secondary" href="#">عرض التفاصيل</a></p>
-      </div><!-- /.col-lg-4 -->
+        <h2>محصول اول</h2>
+        <p>توضیحات</p>
+        <p><a class="btn btn-secondary" href="#">مشاهده</a></p>
+      </div>
       <div class="col-lg-4">
         <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
 
-        <h2>عنوان آخر</h2>
-        <p>إذا أردنا استخدام الحاسوب الذكي في معالجة اللغة العربية فإننا نجد أنفسنا أمام تحدٍّ كبير، خاصة وأن لغتنا تمتاز بتماسك منظوماتها وتداخلها، ومع ذلك فإن الذكاء الاصطناعي يمكّننا من الحصول على أربعة أنواع من المعالجة، هي: المعالجة الصوتية، والمعالجة الصرفية، والمعالجة النحوية، والمعالجة الدلالية.</p>
-        <p><a class="btn btn-secondary" href="#">عرض التفاصيل</a></p>
-      </div><!-- /.col-lg-4 -->
+        <h2>محصول دوم</h2>
+        <p>توضیحات</p>
+        <p><a class="btn btn-secondary" href="#">مشاهده</a></p>
+      </div>
       <div class="col-lg-4">
         <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
 
-        <h2>عنوان ثالث لتأكيد المعلومة</h2>
-        <p>بفضل بحوث الذكاء الاصطناعي وتقنياته استطعنا الانتقال من مرحلة التعامل مع الفيزيائي إلى مرحلة التعامل مع المنطقي، وقد انعكس هذا الانتقال بصورة إيجابية على الكيفية التي تتعامل بها الشعوب مع لغاتها الحيَّة، وهذا يعني أنه يجب أن ينعكس بصورة إيجابية على كيفية تعاملنا مع لغتنا العربية.</p>
-        <p><a class="btn btn-secondary" href="#">عرض التفاصيل</a></p>
-      </div><!-- /.col-lg-4 -->
-    </div><!-- /.row -->
+        <h2>محصول سوم</h2>
+        <p>توضیحات</p>
+        <p><a class="btn btn-secondary" href="#">مشاهده</a></p>
+      </div>
+    </div>
 
 
     <!-- START THE FEATURETTES -->
@@ -208,39 +215,39 @@
     <hr class="featurette-divider">
 
     <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading">العنوان الأول المميز. <span class="text-muted"> سيذهل عقلك. </span></h2>
-        <p class="lead">وجه الإنسان هو جزء معقَّد ومتميِّز للغاية من جسمه. وفي الواقع، إنه أحد أكثر أنظمة الإشارات المتاحة تعقيداً لدينا؛ فهو يتضمَّن أكثر من 40 عضلة مستقلة هيكلياً ووظيفياً، بحيث يمكن تشغيل كل منها بشكل مستقل عن البعض الآخر؛ وتشكِّل أحد أقوى مؤشرات العواطف.</p>
+      <div class="col-md-4">
+        <h2 class="featurette-heading">خرید آسان</h2>
+          <br>
+        <p class="lead"> در دوران قرنظینه از بیرون رفتن بیهوده صرف نظر کنید و خرید های خود را به ما بسپارید. تنها با یک کلیک محصولات مورد علاقه خود را سفارش دهید!</p>
       </div>
-      <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-
-      </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading">أوه نعم، هذا جيد. <span class="text-muted"> شاهد بنفسك. </span></h2>
-        <p class="lead">عندما نضحك أو نبكي، فإننا نعرض عواطفنا، مما يسمح للآخرين بإلقاء نظرة خاطفة على أذهاننا أثناء "قراءة" وجوهنا بناءً على التغييرات في مكوّنات الوجه الرئيسة، مثل: العينين والحاجبين والجفنين والأنف والشفتين.</p>
-      </div>
-      <div class="col-md-5 order-md-1">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-
+      <div class="col-md-8">
+        <img src="static/img/home/1.png" alt="image" style="width: 860px; height: 500px;">
       </div>
     </div>
 
     <hr class="featurette-divider">
 
     <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading">وأخيرًا، هذا. <span class="text-muted"> كش ملك. </span></h2>
-        <p class="lead">إن جميع العضلات في أجسامنا مدعمة بالأعصاب المتصلة من كافة أنحاء الجسم بالنخاع الشوكي والدماغ. وهذا الاتصال العصبي هو ثنائي الاتجاه، أي إن العصب يتسبَّب في تقلصات العضلات بناءً على إشارات الدماغ، ويقوم في الوقت نفسه بإرسال معلومات عن حالة العضلات إلى الدماغ</p>
+      <div class="col-md-3 order-md-2">
+        <h2 class="featurette-heading">تنوع محصولات</h2>
+          <br>
+        <p class="lead">از پوشاک و خوراک گرفته تا لپ تاپ و کتاب، همه و همه تو بازار پیدا میشه. جدید ترین محصولات روز با تخفیفای باور نکردنی!!</p>
       </div>
-      <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+      <div class="col-md-9 order-md-1">
+        <img src="static/img/home/2.jpg" alt="image" style="width: 900px; height: 500px;">
+      </div>
+    </div>
 
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-4">
+        <h2 class="featurette-heading">امنیت</h2>
+          <br>
+        <p class="lead">بازار تمام تلاشش رو کرده تا اطلاعات کاربرانش در امان باشه، با این وجود اگر هنوز هم به خرید های اینترنتی اعتماد نداری یا نگرانی اطلاعاتت به سرقت بره روی عکس کلیک کن!</p>
+      </div>
+      <div class="col-md-8">
+        <a href="https://separex.ir/blog/%D8%B1%D8%A7%D9%87%DA%A9%D8%A7%D8%B1%D9%87%D8%A7%DB%8C-%D8%AE%D8%B1%DB%8C%D8%AF-%D8%A7%D9%85%D9%86-%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86/"><img src="static/img/home/3.jpg" alt="image" style="width: 860px; height: 500px;"></a>
       </div>
     </div>
 
@@ -253,8 +260,8 @@
 
   <!-- FOOTER -->
   <footer class="container">
-    <p class="float-end"><a href="#">بازگشت به ابتدای صفحه</a></p>
-    <p>&copy; 2020–2021 Company, Inc. &middot; <a href="#">سياسة الخصوصية</a> &middot; <a href="#">شروط الاستخدام</a></p>
+    <p class="float-end"><a href="#">بازگشت به بالا</a></p>
+    <p> 2021–2020 &copy;  حقوق مطالب، تصاویر و طرح قالب برای سایت بازار محفوظ است.</p>
   </footer>
 </main>
 

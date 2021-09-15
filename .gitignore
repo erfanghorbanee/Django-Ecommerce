@@ -61,7 +61,8 @@ db.sqlite3-journal
 media
 
 # If you are using PyCharm
-.idea 
+.idea
+*.iws /out/ 
 
 # pyenv
 .python-version

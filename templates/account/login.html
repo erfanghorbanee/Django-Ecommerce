@@ -41,9 +41,14 @@
     button {
         margin-top: 15px;
     }
+
+    .home {
+    text-align: right !important;
+    }
 {% endblock %}
 
 {% block content %}
+<a class="home" href="{% url 'home' %}">بازگشت به صفحه اصلی</a>
 
 <h1>ورود به حساب کاربری</h1>
 

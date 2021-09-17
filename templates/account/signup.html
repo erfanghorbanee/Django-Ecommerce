@@ -43,7 +43,7 @@
 {% block content %}
 <h1>ثبت نام</h1>
 
-<form class="signup" id="signup_form" method="post" action="{% url 'rest_register' %}">
+<form class="signup" dir="ltr" id="signup_form" method="post" action="{% url 'rest_register' %}">
   {% csrf_token %}
   {% bootstrap_form form %}
 

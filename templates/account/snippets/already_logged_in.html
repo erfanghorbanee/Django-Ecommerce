@@ -1,0 +1,6 @@
+{% load i18n %}
+{% load account %}
+
+{% user_display user as user_display %}
+<p><strong>تذکر:</strong> {% blocktrans %}شما در حال حاضر با اکانت {{ user_display }} لاگین هستید.{% endblocktrans %}</p>
+<br>

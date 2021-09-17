@@ -8,9 +8,12 @@
 {% block title %}Signup{% endblock %}
 
 {% block style %}
-    body {
-        text-align: center;
+   body {
         background-color: #F5F5F5;
+    }
+
+    .content {
+        text-align: center;
     }
 
     input {
@@ -37,10 +40,20 @@
 
     h1 {
         margin: 50px;
+        }
+
+    button {
+        margin-top: 15px;
     }
+
+{% endblock %}
+
+{% block header %}
+    <a style="text-align: right; margin-right: 10px; padding-top: 10px;" href="{% url 'home' %}">بازگشت به صفحه اصلی</a>
 {% endblock %}
 
 {% block content %}
+<div class="content">
 <h1>ثبت نام</h1>
 
 <form class="signup" dir="ltr" id="signup_form" method="post" action="{% url 'rest_register' %}">
@@ -60,7 +73,7 @@
 
     <ul id="talk">
     </ul>
+</div>
 {% endblock %}
 
 {% block js %}<script src="{% static 'js/signup.js' %}"></script>{% endblock %}
-

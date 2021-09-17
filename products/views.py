@@ -15,8 +15,3 @@ def home_view(request):
         'categories': categories,
     }
     return render(request, 'products/home.html', context)
-
-
-# def logout_view(request):
-#     logout(request)
-#     return redirect(reverse('home_view'))

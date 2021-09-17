@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load bootstrap4 %}
 {% bootstrap_css %}
 {% bootstrap_javascript jquery='full' %}
@@ -42,7 +43,7 @@
 {% block content %}
 <h1>ثبت نام</h1>
 
-<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+<form class="signup" id="signup_form" method="post" action="{% url 'rest_register' %}">
   {% csrf_token %}
   {% bootstrap_form form %}
 
@@ -57,4 +58,9 @@
 <p><a href="{{ login_url }}">قبلا عضو شده‌اید؟ رفتن به صفحه ورود</a></p>
 </form>
 
+    <ul id="talk">
+    </ul>
 {% endblock %}
+
+{% block js %}<script src="{% static 'js/signup.js' %}"></script>{% endblock %}
+

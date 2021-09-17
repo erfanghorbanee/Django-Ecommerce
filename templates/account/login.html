@@ -8,8 +8,11 @@
 
 {% block style %}
     body {
-        text-align: center;
         background-color: #F5F5F5;
+    }
+
+    .content {
+        text-align: center;
     }
 
     input {
@@ -42,14 +45,14 @@
         margin-top: 15px;
     }
 
-    .home {
-    text-align: right !important;
-    }
+{% endblock %}
+
+{% block header %}
+    <a style="text-align: right; margin-right: 10px; padding-top: 10px;" href="{% url 'home' %}">بازگشت به صفحه اصلی</a>
 {% endblock %}
 
 {% block content %}
-<a class="home" href="{% url 'home' %}">بازگشت به صفحه اصلی</a>
-
+<div class="content">
 <h1>ورود به حساب کاربری</h1>
 
 <form class="login align" method="POST" action="{% url 'account_login' %}">
@@ -68,5 +71,5 @@
     <br>
   <a class="button secondaryAction" href="{% url 'account_signup' %}">عضو نیستید؟ ثبت نام کنید</a>
 </form>
-
+</div>
 {% endblock %}

@@ -29,9 +29,6 @@ class Customer(AbstractUser):
     def __str__(self):
         return self.email
 
-    # class Meta:
-    #     verbose_name_plural = 'Customers'
-
 
 class Address(models.Model):
     user = models.ForeignKey(Customer, on_delete=models.CASCADE, blank=False, null=False)

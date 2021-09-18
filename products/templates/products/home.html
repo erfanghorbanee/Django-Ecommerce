@@ -48,16 +48,6 @@
 {% endblock %}
 
 {% block content %}
-{#<div>#}
-{#    <ul>#}
-{#        {% for category in categories %}#}
-{#            <li>#}
-{#               <a href=""> {{ category.title }}</a>#}
-{#            </li>#}
-{#        {% endfor %}#}
-{#    </ul>#}
-{#</div>#}
-
 
 <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -77,9 +67,9 @@
             دسته&zwnj;بندی
           </a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+              {% for category in categories %}
+                <li><a class="dropdown-item" href="#">{{ category.title }}</a></li>
+              {% endfor %}
           </ul>
       </li>
           <li class="nav-item">

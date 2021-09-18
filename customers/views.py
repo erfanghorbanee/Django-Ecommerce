@@ -1,15 +1,17 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth import logout
-from django.urls import reverse
+from django.shortcuts import render
 from products.models import Product, Category
+from .forms import CustomSignupForm
 
 
 def profile_view(request):
     categories = Category.objects.all()
+    form = CustomSignupForm()
+
     # print(Category.objects.all())
     # print(Category.objects.prefetch_related('products').all())
 
     context = {
         'categories': categories,
+        'form': form,
     }
     return render(request, 'profile.html', context)

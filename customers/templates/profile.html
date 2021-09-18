@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% bootstrap_messages %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block Bootstrap %}
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard-rtl/">
+    <link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet" integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/5.0/examples/dashboard/dashboard.rtl.css" rel="stylesheet">
+
+{% endblock %}
+
+{% block style %}
+    .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+    @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+    h2 {
+        margin-top: 20px;
+    }
+
+    input {
+        margin-bottom:20px;
+    }
+
+    .content {
+        text-align: center;
+    }
+
+    form {
+        display: inline-block;
+
+    }
+{% endblock %}
+
+{% block content %}
+
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">بازار</a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="عرض/إخفاء لوحة التنقل">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+</header>
+
+<div class="container-fluid">
+  <div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="position-sticky pt-3">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">
+              <span data-feather="home"></span>
+               حساب کاربری
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file"></span>
+              سبد خرید
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="shopping-cart"></span>
+              تاریخچه سفارش ها
+            </a>
+          </li>
+        </ul>
+
+      </div>
+    </nav>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+      <h2>حساب کاربری</h2>
+      <div class="content">
+        <form class="form-horizontal" dir="ltr">
+          <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10">
+              <input class="form-control" id="name" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="edit" class="btn btn-dark" id="edit" onclick="return handleEdit()">Edit</button>
+
+              <button type="submit" class="btn btn-dark" id="save" hidden>Save</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block js %}<script src="{% static 'js/profile.js' %}"></script>{% endblock %}

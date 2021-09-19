@@ -3,7 +3,7 @@ from products.models import Product, Category
 from .forms import CustomSignupForm
 
 
-def profile_view(request):
+def profile_view(request, user_id):
     categories = Category.objects.all()
     form = CustomSignupForm()
 

@@ -174,4 +174,5 @@ REST_AUTH_REGISTER_SERIALIZERS = {
 
 ACCOUNT_FORMS = {
     'signup': 'customers.forms.CustomSignupForm',
+    'change_password': 'customers.forms.CustomChangePasswordForm',
 }

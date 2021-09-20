@@ -1,4 +1,4 @@
-from allauth.account.forms import SignupForm
+from allauth.account.forms import SignupForm, ChangePasswordForm
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import Customer
@@ -26,8 +26,24 @@ class CustomSignupForm(SignupForm):
         return user
 
 
-class RegisterForm(forms.ModelForm):
+class DetailForm(forms.ModelForm):
 
     class Meta(UserCreationForm.Meta):
         model = Customer
         fields = ('email', 'first_name', 'last_name', 'phone', 'gender')
+
+
+class CustomChangePasswordForm(ChangePasswordForm):
+
+    def __init__(self, *args, **kwargs):
+        super(CustomChangePasswordForm, self).__init__(*args, **kwargs)
+        self.fields.pop('oldpassword')
+        self.fields['password1'].label = 'گذرواژه جدید'
+        self.fields['password2'].label = 'تکرار گذرواژه جدید'
+        self.fields['password1'].widget.attrs.update({
+            'placeholder': 'گذرواژه جدید'
+        })
+        self.fields['password2'].widget.attrs.update({
+            'placeholder': 'تکرار گذرواژه جدید'
+        })
+

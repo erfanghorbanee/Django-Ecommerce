@@ -17,6 +17,30 @@ class CustomSignupForm(SignupForm):
     )
     gender = forms.ChoiceField(choices=gender_type)
 
+    def __init__(self, *args, **kwargs):
+        super(CustomSignupForm, self).__init__(*args, **kwargs)
+        self.fields['email'].label = 'ایمیل'
+        self.fields['first_name'].label = 'نام'
+        self.fields['last_name'].label = 'نام خانوادگی'
+        self.fields['phone'].label = 'شماره تماس'
+        self.fields['gender'].label = 'جنسیت'
+        self.fields['password1'].label = 'رمز عبور'
+        self.fields['password2'].label = 'تکرار رمز عبور'
+
+        self.fields['email'].widget.attrs.update({
+            'dir': 'ltr'
+        })
+        self.fields['password1'].widget.attrs.update({
+            'placeholder': 'رمز عبور'
+        })
+        self.fields['password2'].widget.attrs.update({
+            'placeholder': 'تکرار رمز عبور'
+        })
+        self.fields['phone'].widget.attrs.update({
+            'placeholder': 'Phone',
+            'dir': 'ltr'
+        })
+
     def signup(self, request, user):
         user.first_name = self.cleaned_data['first_name']
         user.last_name = self.cleaned_data['last_name']
@@ -47,6 +71,7 @@ class CustomChangePasswordForm(ChangePasswordForm):
         self.fields.pop('oldpassword')
         self.fields['password1'].label = 'گذرواژه جدید'
         self.fields['password2'].label = 'تکرار گذرواژه جدید'
+
         self.fields['password1'].widget.attrs.update({
             'placeholder': 'گذرواژه جدید'
         })

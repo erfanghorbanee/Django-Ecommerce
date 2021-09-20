@@ -3,7 +3,7 @@ function signup() {
     console.log("signup is working!") // sanity check
 
     $.ajax({
-        url: "http://127.0.0.1:8000/rest-auth/registration/", // the endpoint
+        url: "/rest-auth/registration/", // the endpoint
         type: "POST", // http method
         data: {
             email: $('#id_email').val(), // data sent with the post request

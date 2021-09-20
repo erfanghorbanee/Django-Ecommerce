@@ -97,13 +97,15 @@
       <h2>مشخصات فردی</h2>
 
       <div class="content">
-        <form class="form-horizontal" dir="ltr">
+        <form class="form-horizontal" id="details" dir="ltr">
+            {% csrf_token %}
+
             <fieldset id="myFieldset" disabled="disabled">
                 {% bootstrap_form form %}
             </fieldset>
 
             <button type="button" class="btn btn-dark" id="edit" onclick="return handleEdit()">ویرایش</button>
-            <button type="button" class="btn btn-dark" id="save" hidden>ذخیره</button>
+            <button type="submit" class="btn btn-dark" id="save" hidden>ذخیره</button>
         </form>
       </div>
 

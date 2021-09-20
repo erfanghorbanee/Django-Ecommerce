@@ -62,6 +62,10 @@ class DetailForm(forms.ModelForm):
             'phone': 'شماره تماس',
             'gender': 'جنسیت',
         }
+        widgets = {
+            'email': forms.TextInput(attrs={'placeholder': 'Email', 'dir': 'ltr'}),
+            'phone': forms.TextInput(attrs={'placeholder': 'Phone', 'dir': 'ltr'}),
+        }
 
 
 class CustomChangePasswordForm(ChangePasswordForm):

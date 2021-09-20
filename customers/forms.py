@@ -31,6 +31,13 @@ class DetailForm(forms.ModelForm):
     class Meta(UserCreationForm.Meta):
         model = Customer
         fields = ('email', 'first_name', 'last_name', 'phone', 'gender')
+        labels = {
+            'email': 'ایمیل',
+            'first_name': 'نام',
+            'last_name': 'نام خانوادگی',
+            'phone': 'شماره تماس',
+            'gender': 'جنسیت',
+        }
 
 
 class CustomChangePasswordForm(ChangePasswordForm):

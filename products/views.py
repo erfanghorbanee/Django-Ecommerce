@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import logout
 from django.urls import reverse
 from .models import Product, Category
 
@@ -15,3 +14,12 @@ def home_view(request):
         'categories': categories,
     }
     return render(request, 'products/home.html', context)
+
+
+def products_view(request):
+    categories = Category.objects.all()
+
+    context = {
+        'categories': categories,
+    }
+    return render(request, 'products/products.html', context)

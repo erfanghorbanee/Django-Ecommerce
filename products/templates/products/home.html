@@ -45,12 +45,16 @@
         margin-right: 25px;
         margin-left:  5px;
     }
+
+    .navbar-custom {
+    background-color: #212934;
+    }
 {% endblock %}
 
 {% block content %}
 
 <header>
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top navbar-custom">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">بازار</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="تبديل التنقل">
@@ -59,7 +63,7 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">فروشگاه</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'products' %}">فروشگاه</a>
           </li>
 
       <li class="nav-item dropdown">
@@ -85,7 +89,7 @@
         {% if user.is_authenticated %}
           <div class="dropstart">
                 <a class="btn  dropdown" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img class="Avatar " alt="Avatar " src="static/img/home/profile.png">
+                    <img class="Avatar " alt="Avatar " src="static/img/profile.png">
                 </a>
 
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -158,11 +162,11 @@
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">السابق</span>
+      <span class="visually-hidden">قبل</span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">التالي</span>
+      <span class="visually-hidden">بعد</span>
     </button>
   </div>
 
@@ -236,7 +240,7 @@
         <p class="lead">بازار تمام تلاشش رو کرده تا اطلاعات کاربرانش در امان باشه، با این وجود اگر هنوز هم به خرید های اینترنتی اعتماد نداری یا نگرانی اطلاعاتت به سرقت بره روی عکس کلیک کن!</p>
       </div>
       <div class="col-md-8">
-        <a href="https://separex.ir/blog/%D8%B1%D8%A7%D9%87%DA%A9%D8%A7%D8%B1%D9%87%D8%A7%DB%8C-%D8%AE%D8%B1%DB%8C%D8%AF-%D8%A7%D9%85%D9%86-%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86/"><img src="static/img/home/3.jpg" alt="image" style="width: 860px; height: 500px;"></a>
+        <a href="https://separex.ir/blog/%D8%B1%D8%A7%D9%87%DA%A9%D8%A7%D8%B1%D9%87%D8%A7%DB%8C-%D8%AE%D8%B1%DB%8C%D8%AF-%D8%A7%D9%85%D9%86-%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86/"><img src="/static/img/home/3.jpg/" alt="image" style="width: 860px; height: 500px;"></a>
       </div>
     </div>
 

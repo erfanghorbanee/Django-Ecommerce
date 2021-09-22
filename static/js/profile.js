@@ -3,14 +3,16 @@ function handleEdit() {
     document.getElementById("myFieldset").disabled = false;
     document.getElementById('edit').hidden = true;
     document.getElementById('save').hidden = false;
+    document.getElementById('cancel').hidden = false;
 
     return false;
 }
 
-function handleSave() {
+function handleSaveCancel() {
     document.getElementById("myFieldset").disabled = true;
     document.getElementById('edit').hidden = false;
     document.getElementById('save').hidden = true;
+    document.getElementById('cancel').hidden = true;
 
     return false;
 }
@@ -57,8 +59,9 @@ $('#details').on('submit', function(event){
     event.preventDefault();
     console.log("form submitted!")  // sanity check
     edit_detail();
-    handleSave();
+    handleSaveCancel();
 });
+
 
 
 // change password
@@ -95,5 +98,4 @@ $('#change-pass').on('submit', function(event){
     event.preventDefault();
     console.log("form submitted!")  // sanity check
     change_password();
-
 });

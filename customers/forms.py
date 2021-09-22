@@ -63,7 +63,7 @@ class DetailForm(forms.ModelForm):
             'gender': 'جنسیت',
         }
         widgets = {
-            'email': forms.TextInput(attrs={'placeholder': 'Email', 'dir': 'ltr'}),
+            'email': forms.TextInput(attrs={'placeholder': 'Email', 'dir': 'ltr', 'type': 'email'}),
             'phone': forms.TextInput(attrs={'placeholder': 'Phone', 'dir': 'ltr'}),
         }
 

@@ -1,73 +1,159 @@
-/*navbar*/
 body {
-  margin-bottom: 65px;
+    margin-bottom: 65px;
+}
+
+header {
+    margin-bottom: 80px;
+}
+
+.form-label {
+    margin-left: 10px;
 }
 
 /* Typography */
+
 .h1 {
-  font-family: 'Roboto', sans-serif;
-  font-size: 48px !important;
-  font-weight: 200 !important;
+    font-family: 'Roboto', sans-serif;
+    font-size: 48px !important;
+    font-weight: 200 !important;
 }
+
 .h2 {
-  font-family: 'Roboto', sans-serif;
-  font-size: 30px !important;
-  font-weight: 300;
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px !important;
+    font-weight: 300;
 }
+
 .h3 {
-  font-family: 'Roboto', sans-serif;
-  font-size: 22px !important;
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px !important;
 }
+
+
 /* General */
-.logo { font-weight: 500 !important;}
-.text-warning {  color: #ede861 !important;}
-.text-muted { color: #bcbcbc !important;}
-.text-success { color: #59ab6e !important;}
-.text-light { color: #cfd6e1 !important;}
-.bg-dark { background-color: #212934 !important;}
-.bg-light { background-color: #e9eef5 !important;}
-.bg-black { background-color: #1d242d !important;}
-.bg-success { background-color: #59ab6e !important;}
-.btn-success {
-  background-color: #59ab6e !important;
-  border-color: #56ae6c !important;
+
+.logo {
+    font-weight: 500 !important;
 }
-.pagination .page-link:hover {color: #000;}
-.pagination .page-link:hover, .pagination .page-link.active {
-  background-color: #69bb7e;
-  color: #fff;
+
+.text-warning {
+    color: #ede861 !important;
+}
+
+.text-muted {
+    color: #bcbcbc !important;
+}
+
+.text-success {
+    color: #59ab6e !important;
+}
+
+.text-light {
+    color: #cfd6e1 !important;
+}
+
+.bg-dark {
+    background-color: #212934 !important;
+}
+
+.bg-light {
+    background-color: #e9eef5 !important;
+}
+
+.bg-black {
+    background-color: #1d242d !important;
+}
+
+.btn-primary {
+    background-color: #175c94 !important;
+    border-color: #18598f !important;
+}
+
+.pagination .page-link:hover {
+    color: #000;
+}
+
+.pagination .page-link:hover,
+.pagination .page-link.active {
+    background-color: #18598f;
+    color: #fff;
 }
 
 
 /* Hero Carousel */
-#template-mo-zay-hero-carousel { background: #efefef !important;}
+
+#template-mo-zay-hero-carousel {
+    background: #efefef !important;
+}
+
+
 /* Accordion */
-.templatemo-accordion a { color: #000;}
-.templatemo-accordion a:hover { color: #333d4a;}
+
+.templatemo-accordion a {
+    color: #000;
+}
+
+.templatemo-accordion a:hover {
+    color: #333d4a;
+}
+
+
 /* Shop */
-.shop-top-menu a:hover { color: #69bb7e !important;}
+
+.shop-top-menu a:hover {
+    color: #69bb7e !important;
+}
+
+
 /* Product */
-.product-wap { box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.10);}
-.product-wap .product-color-dot.color-dot-red { background:#f71515;}
-.product-wap .product-color-dot.color-dot-blue { background:#6db4fe;}
-.product-wap .product-color-dot.color-dot-black { background:#000000;}
-.product-wap .product-color-dot.color-dot-light { background:#e0e0e0;}
-.product-wap .product-color-dot.color-dot-green { background:#0bff7e;}
+
+.product-wap {
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.10);
+}
+
+.product-wap .product-color-dot.color-dot-red {
+    background: #f71515;
+}
+
+.product-wap .product-color-dot.color-dot-blue {
+    background: #6db4fe;
+}
+
+.product-wap .product-color-dot.color-dot-black {
+    background: #000000;
+}
+
+.product-wap .product-color-dot.color-dot-light {
+    background: #e0e0e0;
+}
+
+.product-wap .product-color-dot.color-dot-green {
+    background: #0bff7e;
+}
+
 .card.product-wap .card .product-overlay {
-  background: rgba(0,0,0,.2);
-  visibility: hidden;
-  opacity: 0;
-  transition: .3s;
+    background: rgba(0, 0, 0, .2);
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s;
 }
+
 .card.product-wap:hover .card .product-overlay {
-  visibility: visible;
-  opacity: 1;
+    visibility: visible;
+    opacity: 1;
 }
-.card.product-wap a { color: #000;}
-#carousel-related-product .slick-slide:focus { outline: none !important;}
+
+.card.product-wap a {
+    color: #000;
+}
+
+#carousel-related-product .slick-slide:focus {
+    outline: none !important;
+}
+
 #carousel-related-product .slick-dots li button:before {
-  font-size: 15px;
-  margin-top: 20px;
+    font-size: 15px;
+    margin-top: 20px;
 }
 
 
@@ -75,34 +161,60 @@ body {
 // Extra small devices (portrait phones, less than 576px)
 // No media query since this is the default in Bootstrap
 */
+
+
 /* Small devices (landscape phones, 576px and up)*/
-.product-wap .h3, .product-wap li, .product-wap i, .product-wap p {
-  font-size: 12px !important;
+
+.product-wap .h3,
+.product-wap li,
+.product-wap i,
+.product-wap p {
+    font-size: 12px !important;
 }
+
 .product-wap .product-color-dot {
-  width: 6px;
-  height: 6px;
+    width: 6px;
+    height: 6px;
 }
 
 @media (min-width: 576px) {
-  .tempaltemo-carousel .h1 { font-size: 1em !important;}
+    .tempaltemo-carousel .h1 {
+        font-size: 1em !important;
+    }
 }
+
 
 /*// Medium devices (tablets, 768px and up)*/
-@media (min-width: 768px) {
-  #templatemo_main_nav .navbar-nav {max-width: 450px;}
- }
 
-/* Large devices (desktops, 992px and up)*/
-@media (min-width: 992px) {
-  #templatemo_main_nav .navbar-nav {max-width: 550px;}
-  #template-mo-zay-hero-carousel .carousel-item {min-height: 30rem !important;}
-  .product-wap .h3, .product-wap li, .product-wap i, .product-wap p {font-size: 18px !important;}
-  .product-wap .product-color-dot {
-    width: 12px;
-    height: 12px;
-  }
+@media (min-width: 768px) {
+    #templatemo_main_nav .navbar-nav {
+        max-width: 450px;
+    }
 }
 
+
+/* Large devices (desktops, 992px and up)*/
+
+@media (min-width: 992px) {
+    #templatemo_main_nav .navbar-nav {
+        max-width: 550px;
+    }
+    #template-mo-zay-hero-carousel .carousel-item {
+        min-height: 30rem !important;
+    }
+    .product-wap .h3,
+    .product-wap li,
+    .product-wap i,
+    .product-wap p {
+        font-size: 18px !important;
+    }
+    .product-wap .product-color-dot {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+
 /* Extra large devices (large desktops, 1200px and up)*/
+
 @media (min-width: 1200px) {}

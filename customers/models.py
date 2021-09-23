@@ -21,8 +21,8 @@ class Customer(AbstractUser):
     MALE = False
     FEMALE = True
     gender_type = (
-        (MALE, "male"),
-        (FEMALE, "female")
+        (MALE, "مرد"),
+        (FEMALE, "زن")
     )
     gender = models.BooleanField(default=True, choices=gender_type, null=False, blank=False)
 

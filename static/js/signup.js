@@ -10,7 +10,7 @@ function signup() {
             phone: $('#id_phone').val(),
             first_name: $('#id_first_name').val(),
             last_name: $('#id_last_name').val(),
-            gender: $('#id_gender').val(),
+            // gender: $('#id_gender').val(),
             password: $('#id_password1').val(),
             password2: $('#id_password2').val(),
         },

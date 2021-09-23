@@ -9,13 +9,13 @@ class CustomSignupForm(SignupForm):
     last_name = forms.CharField(max_length=20)
     phone = forms.CharField(max_length=15)
 
-    MALE = False
-    FEMALE = True
-    gender_type = (
-        (MALE, "male"),
-        (FEMALE, "female")
-    )
-    gender = forms.ChoiceField(choices=gender_type)
+    # MALE = False
+    # FEMALE = True
+    # gender_type = (
+    #     (MALE, "مرد"),
+    #     (FEMALE, "زن")
+    # )
+    # gender = forms.ChoiceField(choices=gender_type)
 
     def __init__(self, *args, **kwargs):
         super(CustomSignupForm, self).__init__(*args, **kwargs)
@@ -23,7 +23,7 @@ class CustomSignupForm(SignupForm):
         self.fields['first_name'].label = 'نام'
         self.fields['last_name'].label = 'نام خانوادگی'
         self.fields['phone'].label = 'شماره تماس'
-        self.fields['gender'].label = 'جنسیت'
+        # self.fields['gender'].label = 'جنسیت'
         self.fields['password1'].label = 'رمز عبور'
         self.fields['password2'].label = 'تکرار رمز عبور'
 

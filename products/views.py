@@ -18,8 +18,10 @@ def home_view(request):
 
 def products_view(request):
     categories = Category.objects.all()
+    products = Product.objects.all()
 
     context = {
         'categories': categories,
+        'products': products,
     }
     return render(request, 'products/products.html', context)

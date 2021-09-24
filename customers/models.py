@@ -16,7 +16,6 @@ class Customer(AbstractUser):
     objects = CustomUserManager()
 
     phone = PhoneNumberField(null=False, blank=False)
-    image = models.ImageField(upload_to="static/img/customers_image", blank=True, null=True)
 
     MALE = False
     FEMALE = True
@@ -32,7 +31,8 @@ class Customer(AbstractUser):
 
 class Address(models.Model):
     user = models.ForeignKey(Customer, on_delete=models.CASCADE, blank=False, null=False)
-    address = models.CharField(max_length=1000, blank=False, null=False)
+    address = models.CharField(max_length=1200, blank=False, null=False)
+    postcode = models.CharField(max_length=12)
 
     def __str__(self):
         return self.user.username

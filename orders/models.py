@@ -1,25 +1,37 @@
 from django.db import models
-from customers.models import Customer
+from customers.models import Customer, Address
 from products.models import Product
 
 
-class OrderProduct(models.Model):
-    user = models.ForeignKey(Customer, on_delete=models.CASCADE, blank=False, null=False)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.IntegerField(default=1)
-
-    def __str__(self):
-        return f"{self.user.username}: {self.quantity} of {self.product.title}"
-
-
 class Order(models.Model):
-    # Cart model
-    user = models.ForeignKey(Customer, on_delete=models.CASCADE, blank=False, null=False)
+    user = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
+    address = models.ForeignKey(Address, on_delete=models.SET_NULL, null=True)
+    products = models.ManyToManyField(Product)
     ref_code = models.CharField(max_length=10, blank=True, null=True)
-    products = models.ManyToManyField(OrderProduct)
-    ordered_date = models.DateTimeField()
-    being_delivered = models.BooleanField(default=False)
-    received = models.BooleanField(default=False)
+    total_price = models.PositiveIntegerField()
+
+    READY_TO_DELIVER = 'ready_to_deliver'
+    DELIVERING = 'delivering'
+    DELIVERED = 'delivered'
+    status_type = [
+        (READY_TO_DELIVER, 'ready_to_deliver'),
+        (DELIVERING, 'delivering'),
+        (DELIVERED, 'delivered'),
+    ]
+    status = models.CharField(
+        max_length=20,
+        choices=status_type,
+        default=READY_TO_DELIVER,
+    )
 
     def __str__(self):
-        return f"{self.user.username}: {self.ref_code}"
+        return f"{self.user.username}"
+
+
+class OrderHistory(models.Model):
+    order = models.OneToOneField(Order, on_delete=models.CASCADE)
+    ordered_date = models.DateTimeField(blank=True, null=True)
+    delivered_date = models.DateTimeField(blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.user.username}"

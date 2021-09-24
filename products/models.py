@@ -19,7 +19,7 @@ class Product(models.Model):
     description = models.TextField(max_length=5000, blank=False, null=False)
     image = models.ImageField(upload_to="static/img/products_image", blank=False, null=False)
     rate = models.PositiveIntegerField(default=0, validators=[MaxValueValidator(5), MinValueValidator(0)])
-    counts = models.PositiveIntegerField()
+    count = models.PositiveIntegerField(blank=True, null=True)
 
     # Product views
     views = models.PositiveIntegerField(default=0)

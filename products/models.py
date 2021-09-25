@@ -25,6 +25,7 @@ class Product(models.Model):
     title = models.CharField(max_length=200, blank=False, null=False)
     price = models.FloatField(blank=False, null=False)
     description = models.TextField(max_length=5000, blank=False, null=False)
+    seller = models.CharField(max_length=200, default="بازار", blank=False, null=False)
     rate = models.PositiveIntegerField(default=0, validators=[MaxValueValidator(5), MinValueValidator(0)])
     count = models.PositiveIntegerField(blank=True, null=True)
     image = models.ManyToManyField(ProductImage)

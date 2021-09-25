@@ -1,5 +1,5 @@
 function pagination_func(url = '/rest/products_list') {
-    if (url != null) {
+    // if (url != null) {    must add regex for null
 
     const data = {requestType: 'getPageProducts'}
 
@@ -17,12 +17,15 @@ function pagination_func(url = '/rest/products_list') {
             let previous_page = data['links']['previous']
             let products = data['results']
 
+            $('#product_card').html("");
+            $('#pagination').html("");
+
             // products list on each page
             for (let product in products) {
                 let product_card = `<div class="col-md-4">
                                             <div class="card mb-4 product-wap rounded-0">
                                                 <div class="card rounded-0">
-                                                    <img class="card-img rounded-0 img-fluid" src='` + products[product].image + `'>
+                                                    <img class="card-img rounded-0 img-fluid" alt="product image" src='` + products[product].image + `'>
                                                     <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                                         <ul class="list-unstyled">
                                                             <li><a class="btn btn-primary text-white see" href="/products/`+ products[product].id + `">
@@ -49,13 +52,14 @@ function pagination_func(url = '/rest/products_list') {
                                             </div>
                                         </div>`
 
+
                 $('#product_card').append(product_card);
             }
 
 
             // pagination buttons
-            let pagination = `<a href="#" onclick="pagination_func(`+ previous_page +`); return false;">❮</a>
-                              <a href="#" onclick="pagination_func(`+ next_page +`); return false;">❯</a>`
+            let pagination = `<a href="#" onclick="pagination_func('`+ previous_page +`'); return false;">❮</a>
+                              <a href="#" onclick="pagination_func('`+ next_page +`'); return false;">❯</a>`
 
             $('#pagination').append(pagination);
 
@@ -65,7 +69,7 @@ function pagination_func(url = '/rest/products_list') {
             console.log("ERROR : ", e);
         }
     });
-    }
+    // }
 }
 
 pagination_func();

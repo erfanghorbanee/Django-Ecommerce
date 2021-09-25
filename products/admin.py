@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Category
+from .models import Product, Category, ProductImage
 
 
 # A class that displays Product in a table form
@@ -27,3 +27,6 @@ class CategoryAdmin(admin.ModelAdmin):
 
     # We don't want ids showing up
     exclude = ('id',)
+
+
+admin.site.register(ProductImage)

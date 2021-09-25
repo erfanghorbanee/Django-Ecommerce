@@ -16,6 +16,7 @@ function pagination_func(url = '/rest/products_list') {
             let next_page = data['links']['next']
             let previous_page = data['links']['previous']
             let products = data['results']
+            // console.log(products)
 
             $('#product_card').html("");
             $('#pagination').html("");
@@ -25,7 +26,7 @@ function pagination_func(url = '/rest/products_list') {
                 let product_card = `<div class="col-md-4">
                                             <div class="card mb-4 product-wap rounded-0">
                                                 <div class="card rounded-0">
-                                                    <img class="card-img rounded-0 img-fluid" alt="product image" src='` + products[product].image + `'>
+                                                    <img class="card-img rounded-0 img-fluid" alt="product image" src='` + products[product].image[0]["image"] + `'>
                                                     <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                                         <ul class="list-unstyled">
                                                             <li><a class="btn btn-primary text-white see" href="/products/`+ products[product].id + `">
@@ -51,7 +52,6 @@ function pagination_func(url = '/rest/products_list') {
                                                 </div>
                                             </div>
                                         </div>`
-
 
                 $('#product_card').append(product_card);
             }

@@ -133,7 +133,7 @@
             <div class="row">
                 <div class="col-lg-5 mt-5">
                     <div class="card mb-3">
-                        <img class="card-img img-fluid" src="/{{ product.image }}" alt="Card image cap" id="product-detail">
+                        <img class="card-img img-fluid" src="/{{ product.image.first.image }}" alt="Card image cap" id="product-detail">
                     </div>
                     <div class="row">
                         <!--Start Controls-->
@@ -144,6 +144,7 @@
                             </a>
                         </div>
                         <!--End Controls-->
+
                         <!--Start Carousel Wrapper-->
                         <div id="multi-item-example" class="col-10 carousel slide carousel-multi-item" data-bs-ride="carousel">
                             <!--Start Slides-->
@@ -152,21 +153,16 @@
                                 <!--First slide-->
                                 <div class="carousel-item active">
                                     <div class="row">
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="/{{ product.image }}" alt="Product Image 1">
-                                            </a>
-                                        </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_02.jpg" alt="Product Image 2">
-                                            </a>
-                                        </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_03.jpg" alt="Product Image 3">
-                                            </a>
-                                        </div>
+                                        {% for item in product.image.all %}
+                                            {% if forloop.counter <= 3 %}
+                                                <div class="col-4">
+                                                    <a href="#">
+                                                        <img class="card-img img-fluid" src="/{{ item.image }}" alt="Product Image 1">
+                                                    </a>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+
                                     </div>
                                 </div>
                                 <!--/.First slide-->
@@ -174,50 +170,25 @@
                                 <!--Second slide-->
                                 <div class="carousel-item">
                                     <div class="row">
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_04.jpg" alt="Product Image 4">
-                                            </a>
-                                        </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_05.jpg" alt="Product Image 5">
-                                            </a>
-                                        </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_06.jpg" alt="Product Image 6">
-                                            </a>
-                                        </div>
+                                        {% for item in product.image.all %}
+                                            {% if forloop.counter > 3 %}
+                                                <div class="col-4">
+                                                    <a href="#">
+                                                        <img class="card-img img-fluid" src="/{{ item.image }}" alt="Product Image 4">
+                                                    </a>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+
+
                                     </div>
                                 </div>
                                 <!--/.Second slide-->
-
-                                <!--Third slide-->
-                                <div class="carousel-item">
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_07.jpg" alt="Product Image 7">
-                                            </a>
-                                        </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_08.jpg" alt="Product Image 8">
-                                            </a>
-                                        </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_09.jpg" alt="Product Image 9">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--/.Third slide-->
                             </div>
                             <!--End Slides-->
                         </div>
                         <!--End Carousel Wrapper-->
+
                         <!--Start Controls-->
                         <div class="col-1 align-self-center">
                             <a href="#multi-item-example" role="button" data-bs-slide="next">
@@ -235,11 +206,6 @@
                             <h1 class="h2">{{ product.title }}</h1>
                             <p class="h3 py-2">{{ product.price }} تومان</p>
                             <p class="py-2">
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-secondary"></i>
                                 <span class="list-inline-item text-dark">Rating 4.8 | 36 Comments</span>
                             </p>
                             <ul class="list-inline">
@@ -261,8 +227,6 @@
                                     <p class="text"><strong>{{ product.count }}</strong></p>
                                 </li>
                             </ul>
-
-
 
                             <form action="" method="GET">
                                 <input type="hidden" name="product-title" value="Activewear">
@@ -300,7 +264,6 @@
 
     <script src="/static/js/templatemo.js"></script>
     <script src="/static/js/pagination.js"></script>
-
 
 
     <!-- FOOTER -->

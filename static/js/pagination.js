@@ -1,9 +1,11 @@
-// function pagination_func(url = '/rest/products_list') {
+function pagination_func(url = '/rest/products_list') {
+    if (url != null) {
+
     const data = {requestType: 'getPageProducts'}
 
     $.ajax({
         type: "GET",
-        url: '/rest/products_list',
+        url: url,
         data: data,
         processData: false,
         contentType: false,
@@ -52,8 +54,8 @@
 
 
             // pagination buttons
-            let pagination = `<a href="` + previous_page + `">❮</a>
-                                  <a href="` + next_page + `">❯</a>`
+            let pagination = `<a href="#" onclick="pagination_func(`+ previous_page +`); return false;">❮</a>
+                              <a href="#" onclick="pagination_func(`+ next_page +`); return false;">❯</a>`
 
             $('#pagination').append(pagination);
 
@@ -63,6 +65,7 @@
             console.log("ERROR : ", e);
         }
     });
-// }
+    }
+}
 
-// pagination_func();
+pagination_func();

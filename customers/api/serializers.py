@@ -41,7 +41,7 @@ class CustomRegisterSerializer(serializers.ModelSerializer):
             first_name=self.validated_data['first_name'],
             last_name=self.validated_data['last_name'],
             phone=self.validated_data['phone'],
-            gender=self.validated_data['gender']
+            # gender=self.validated_data['gender']
         )
 
         password = self.validated_data['password']

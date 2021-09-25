@@ -124,49 +124,47 @@
         <div class="row">
 
             <div class="col-lg-3">
-                                    <h1 class="h2 pb-4">دسته&zwnj;بندی</h1>
+                <h1 class="h2 pb-4">دسته&zwnj;بندی</h1>
 
-                                    <ul class="list-unstyled templatemo-accordion">
-                                    {% for category in categories %}
-                                        <li class="pb-3">
-                                            <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                                                {{ category }}
-                                                <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
-                                            </a>
-                                            <ul class="collapse show list-unstyled pl-3">
-                                                <li><a class="text-decoration-none" href="#">1</a></li>
-                                                <li><a class="text-decoration-none" href="#">2</a></li>
-                                            </ul>
-                                        </li>
-                                    {% endfor %}
-                                    </ul>
+                <ul class="list-unstyled templatemo-accordion">
+                    {% for category in categories %}
+                        <li class="pb-3">
+                            <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                                {{ category }}
+                                <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
+                            </a>
+                            <ul class="collapse show list-unstyled pl-3">
+                                <li><a class="text-decoration-none" href="#">1</a></li>
+                                <li><a class="text-decoration-none" href="#">2</a></li>
+                            </ul>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-lg-9">
 
-                                </div>
+                <div class="row">
+                    <div class="col-md-6 pb-4">
+                        <div class="d-flex">
+                            <label class="form-label select-label">مرتب‌سازی&nbspبر&nbspاساس:</label>
+                            <select class="form-control">
+                                <option>جدیدترین</option>
+                                <option>ارزان‌ترین</option>
+                                <option>گران‌ترین</option>
+                                <option>پربازدیدترین</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
 
-                                <div class="col-lg-9">
+                <div class="row" id="product_card">
+                </div>
 
-                                    <div class="row">
-                                        <div class="col-md-6 pb-4">
-                                            <div class="d-flex">
-                                                <label class="form-label select-label">مرتب‌سازی&nbspبر&nbspاساس:</label>
-                                                <select class="form-control">
-                                                    <option>جدیدترین</option>
-                                                    <option>ارزان‌ترین</option>
-                                                    <option>گران‌ترین</option>
-                                                    <option>پربازدیدترین</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row" id="product_card">
-                                    </div>
-
-                                    <div class="row" dir="ltr">
-                                        <div class="pagination" id="pagination">
-                                        </div>
-                                    </div>
-                                </div>
+                <div class="row" dir="ltr">
+                    <div class="pagination" id="pagination">
+                    </div>
+                </div>
+            </div>
 
         </div>
         <hr class="featurette-divider">
@@ -174,10 +172,10 @@
     <!-- End Content -->
 
 
-    {% block js %}
-        <script src="/static/js/templatemo.js"></script>
-        <script src="/static/js/pagination.js"></script>
-    {% endblock %}
+
+    <script src="/static/js/templatemo.js"></script>
+    <script src="/static/js/pagination.js"></script>
+
 
 
   <!-- FOOTER -->

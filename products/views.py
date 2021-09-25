@@ -23,3 +23,14 @@ def products_view(request):
         'categories': categories,
     }
     return render(request, 'products/products.html', context)
+
+
+def single_product_view(request, product_id):
+    categories = Category.objects.all()
+    product = Product.objects.filter(id=product_id).first()
+
+    context = {
+        'categories': categories,
+        'product': product,
+    }
+    return render(request, 'products/single_product.html', context)

@@ -128,16 +128,24 @@
 
                 <ul class="list-unstyled templatemo-accordion">
                     {% for category in categories %}
-                        <li class="pb-3">
-                            <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                                {{ category }}
-                                <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
-                            </a>
-                            <ul class="collapse show list-unstyled pl-3">
-                                <li><a class="text-decoration-none" href="#">1</a></li>
-                                <li><a class="text-decoration-none" href="#">2</a></li>
-                            </ul>
-                        </li>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="flexRadioDefault">
+                          <label class="form-check-label" for="flexRadioDefault1">
+                              {{ category }}
+                          </label>
+                        </div>
+
+
+{#                        <li class="pb-3">#}
+{#                            <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">#}
+{#                                {{ category }}#}
+{#                                <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>#}
+{#                            </a>#}
+{#                            <ul class="collapse show list-unstyled pl-3">#}
+{#                                <li><a class="text-decoration-none" href="#">1</a></li>#}
+{#                                <li><a class="text-decoration-none" href="#">2</a></li>#}
+{#                            </ul>#}
+{#                        </li>#}
                     {% endfor %}
                 </ul>
             </div>

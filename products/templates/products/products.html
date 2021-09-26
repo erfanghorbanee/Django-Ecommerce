@@ -127,13 +127,24 @@
                 <h1 class="h2 pb-4">دسته&zwnj;بندی</h1>
 
                 <ul class="list-unstyled templatemo-accordion">
-                    {% for category in categories %}
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="flexRadioDefault">
-                          <label class="form-check-label" for="flexRadioDefault1">
-                              {{ category }}
-                          </label>
-                        </div>
+
+                    <form id="myForm">
+                        {% for category in categories %}
+                            <li>
+                            <label>
+                                <input type="radio" name="option" value="{{ category }}" onclick="pagination_func('/rest/products_list?category={{ category }}');">
+                                {{ category }}
+                            </label>
+                            </li>
+                        {% endfor %}
+                        <br>
+                        <li>
+                            <label>
+                                <input type="radio" name="option" value="undefined" checked onclick="">
+                                هیچ کدام
+                            </label>
+                        </li>
+                    </form>
 
 
 {#                        <li class="pb-3">#}
@@ -146,7 +157,7 @@
 {#                                <li><a class="text-decoration-none" href="#">2</a></li>#}
 {#                            </ul>#}
 {#                        </li>#}
-                    {% endfor %}
+
                 </ul>
             </div>
             <div class="col-lg-9">

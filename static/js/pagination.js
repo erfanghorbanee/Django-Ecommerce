@@ -1,7 +1,7 @@
 function pagination_func(url = '/rest/products_list') {
     // if (url != null) {    must add regex for null
 
-    const data = {requestType: 'getPageProducts'}
+    const data = {}
 
     $.ajax({
         type: "GET",
@@ -16,10 +16,11 @@ function pagination_func(url = '/rest/products_list') {
             let next_page = data['links']['next']
             let previous_page = data['links']['previous']
             let products = data['results']
-            // console.log(products)
 
             $('#product_card').html("");
             $('#pagination').html("");
+
+
 
             // products list on each page
             for (let product in products) {

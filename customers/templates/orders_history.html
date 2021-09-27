@@ -129,7 +129,7 @@
               {% for order in orders %}
                 <tr>
                   <td>{{ order.ref_code }}</td>
-                  <td dir="ltr">{{ order.date|date:"Y-m-d H:i" }}</td>
+                  <td dir="ltr">{{ order.order_date|date:"Y-m-d H:i" }}</td>
                   <td>{{ order.order.total_price }} تومان</td>
                   <td>{{ order.delivery_status }}</td>
                   <td><a href="#">نمایش</a></td>

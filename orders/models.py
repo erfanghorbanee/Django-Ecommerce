@@ -14,7 +14,7 @@ class Order(models.Model):
 
 class OrderHistory(models.Model):
     order = models.OneToOneField(Order, on_delete=models.CASCADE)
-    date = models.DateTimeField(blank=True, null=True)
+    order_date = models.DateTimeField(blank=True, null=True)
     ref_code = models.CharField(max_length=10, blank=True, null=True)
 
     READY_TO_DELIVER = 'آماده ارسال'

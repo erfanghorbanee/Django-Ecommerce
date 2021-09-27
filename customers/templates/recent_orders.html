@@ -120,21 +120,21 @@
                 <tr>
                   <th scope="col">کد پیگیری</th>
                   <th scope="col">تاریخ</th>
-                  <th scope="col">فروشنده</th>
                   <th scope="col">جمع قیمت</th>
-                  <th scope="col">وضعیت</th>
+                  <th scope="col">وضعیت ارسال</th>
                   <th scope="col">جزئیات</th>
                 </tr>
               </thead>
               <tbody>
+              {% for order in recent_orders %}
                 <tr>
-                  <td>1,001</td>
-                  <td>بيانات</td>
-                  <td>عشوائية</td>
-                  <td>تثري</td>
-                  <td>الجدول</td>
+                  <td>{{ order.ref_code }}</td>
+                  <td dir="ltr">{{ order.order_date|date:"Y-m-d H:i" }}</td>
+                  <td>{{ order.order.total_price }} تومان</td>
+                  <td>{{ order.delivery_status }}</td>
                   <td><a href="#">نمایش</a></td>
                 </tr>
+              {% endfor %}
               </tbody>
             </table>
           </div>

@@ -6,7 +6,6 @@ from .serializers import ProductSerializer
 
 @api_view(['GET', ])
 def product_list_view(request):
-    # print(request.GET('cat'))
     paginator = CustomPagination()
     query_set = Product.objects.all()
 

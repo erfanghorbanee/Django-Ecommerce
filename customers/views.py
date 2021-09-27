@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from .forms import DetailForm
+from orders.models import Order, OrderHistory
 
 
 def profile_view(request):
@@ -19,10 +20,10 @@ def profile_view(request):
 def orders_history_view(request):
     if request.user.is_authenticated:
 
-        form = DetailForm(instance=request.user)
+        orders = OrderHistory.objects.all()
 
         context = {
-            'form': form,
+            'orders': orders,
         }
         return render(request, 'orders_history.html', context)
 
@@ -32,10 +33,11 @@ def orders_history_view(request):
 def recent_orders_view(request):
     if request.user.is_authenticated:
 
-        form = DetailForm(instance=request.user)
+        # orders in past 10 days
+        recent_orders = OrderHistory.objects.all()
 
         context = {
-            'form': form,
+            'recent_orders': recent_orders,
         }
         return render(request, 'recent_orders.html', context)
 

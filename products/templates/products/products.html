@@ -132,7 +132,7 @@
                         {% for category in categories %}
                             <li>
                             <label>
-                                <input type="radio" name="option" value="{{ category }}" onclick="pagination_func('/rest/products_list?category={{ category }}');">
+                                <input type="radio" name="option" value="{{ category }}" onchange="pagination_func('/rest/products_list?category={{ category }}');">
                                 {{ category }}
                             </label>
                             </li>
@@ -140,7 +140,7 @@
                         <br>
                         <li>
                             <label>
-                                <input type="radio" name="option" value="undefined" checked onclick="pagination_func();">
+                                <input type="radio" name="option" value="undefined" checked onchange="pagination_func();">
                                 هیچ کدام
                             </label>
                         </li>

@@ -9,28 +9,27 @@ class Order(models.Model):
     total_price = models.PositiveIntegerField()
 
     def __str__(self):
-        return f"{self.user.username}"
+        return f"{self.user.email}"
 
 
 class OrderHistory(models.Model):
     order = models.OneToOneField(Order, on_delete=models.CASCADE)
-    ordered_date = models.DateTimeField(blank=True, null=True)
-    delivered_date = models.DateTimeField(blank=True, null=True)
+    date = models.DateTimeField(blank=True, null=True)
     ref_code = models.CharField(max_length=10, blank=True, null=True)
 
-    READY_TO_DELIVER = 'ready_to_deliver'
-    DELIVERING = 'delivering'
-    DELIVERED = 'delivered'
+    READY_TO_DELIVER = 'آماده ارسال'
+    DELIVERING = 'فرستاده شد'
+    DELIVERED = 'دریافت شد'
     status_type = [
-        (READY_TO_DELIVER, 'ready_to_deliver'),
-        (DELIVERING, 'delivering'),
-        (DELIVERED, 'delivered'),
+        (READY_TO_DELIVER, 'آماده ارسال'),
+        (DELIVERING, 'فرستاده شد'),
+        (DELIVERED, 'دریافت شد'),
     ]
-    status = models.CharField(
+    delivery_status = models.CharField(
         max_length=20,
         choices=status_type,
         default=READY_TO_DELIVER,
     )
 
     def __str__(self):
-        return f"{self.user.username}"
+        return f"{self.order.user}"

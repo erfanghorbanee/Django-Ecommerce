@@ -5,7 +5,7 @@
 {% bootstrap_javascript jquery='full' %}
 {% bootstrap_messages %}
 
-{% block title %}Dashboard{% endblock %}
+{% block title %}Orders{% endblock %}
 
 {% block Bootstrap %}
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard-rtl/">
@@ -37,7 +37,7 @@
 
     input {
         margin-bottom:20px;
-        margin-top: 2px;
+        margin-top: 3px;
     }
 
     .content {
@@ -50,24 +50,6 @@
 
     #id_gender {
         margin-bottom: 15px;
-    }
-
-    button {
-        margin-bottom: 15px;
-    }
-
-    a {
-        font-size: 14px;
-        color: #666666;
-    }
-
-    a:focus {
-        outline: none !important;
-    }
-
-    a:hover {
-        text-decoration: none;
-        color: #333333;
     }
 {% endblock %}
 
@@ -92,12 +74,12 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#">
+            <a class="nav-link" href="{% url 'account_set_password' %}">
               حساب کاربری
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'orders' %}">
+            <a class="nav-link active" href="{% url 'orders' %}">
               تاریخچه سفارش ها
             </a>
           </li>
@@ -113,17 +95,11 @@
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
-        <h2>انتخاب گذرواژه</h2>
+      <h2>تاریخچه سفارش ها</h2>
 
-        <div class="content">
-            <form method="POST" class="password_change" id="change-pass">
-                {% csrf_token %}
-                {% bootstrap_form form %}
-                <button class="btn btn-dark" type="submit" name="action">به‌روزرسانی گذرواژه</button>
-                <br>
-                <a href="{% url 'account_reset_password' %}">فراموشی رمز عبور</a>
-            </form>
-        </div>
+      <div class="content">
+
+      </div>
 
     </main>
   </div>

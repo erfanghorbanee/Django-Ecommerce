@@ -5,7 +5,7 @@
 {% bootstrap_javascript jquery='full' %}
 {% bootstrap_messages %}
 
-{% block title %}Dashboard{% endblock %}
+{% block title %}Profile{% endblock %}
 
 {% block Bootstrap %}
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard-rtl/">
@@ -79,13 +79,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              سبد خرید
+            <a class="nav-link" href="{% url 'orders' %}">
+              تاریخچه سفارش ها
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              تاریخچه سفارش ها
+            <a class="nav-link" href="{% url 'recent_orders' %}">
+              سفارشات اخیر
             </a>
           </li>
         </ul>

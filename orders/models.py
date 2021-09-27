@@ -32,4 +32,4 @@ class OrderHistory(models.Model):
     )
 
     def __str__(self):
-        return f"{self.order.user}"
+        return f"{self.order.user} | {self.id}"

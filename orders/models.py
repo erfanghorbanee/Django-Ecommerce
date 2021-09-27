@@ -9,7 +9,7 @@ class Order(models.Model):
     total_price = models.PositiveIntegerField()
 
     def __str__(self):
-        return f"{self.user.email}"
+        return f"{self.user}"
 
 
 class OrderHistory(models.Model):

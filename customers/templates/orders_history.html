@@ -52,6 +52,11 @@
     #id_gender {
         margin-bottom: 15px;
     }
+
+    .card{
+    margin-bottom: 15px;
+    }
+
 {% endblock %}
 
 {% block content %}
@@ -132,9 +137,9 @@
                   <td dir="ltr">{{ order.order_date|date:"Y-m-d H:i" }}</td>
                   <td>{{ order.order.total_price }} تومان</td>
                   <td>{{ order.delivery_status }}</td>
-                  <td><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">نمایش</a></td>
+                  <td><a href="#" data-bs-toggle="modal" data-bs-target="#{{ order.ref_code }}">نمایش</a></td>
 
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="{{ order.ref_code }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -142,9 +147,22 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
-                        {{ order.order.products.all }}
-                          {{ order.ref_code }}
-                          {{ order.delivery_status }}
+                      <div class="row">
+                        {% for product in order.order.products.all %}
+
+                                  <div class="col-6">
+                                    <div class="card text-center">
+                                      <a href="{% url 'single_product' product.id %}"><img src="/{{ product.image.first.image }}" class="card-img-top" alt="product image"></a>
+                                      <div class="card-body">
+                                        <h5 class="card-title">{{ product.title }}</h5>
+                                        <p class="card-text">{{ product.description }}</p>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                        {% endfor %}
+                      </div>
+
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>

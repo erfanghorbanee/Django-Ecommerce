@@ -21,7 +21,6 @@ function pagination_func(url = '/rest/products_list') {
             $('#pagination').html("");
 
 
-
             // products list on each page
             for (let product in products) {
                 let product_card = `<div class="col-md-4">
@@ -30,7 +29,7 @@ function pagination_func(url = '/rest/products_list') {
                                                     <img class="card-img rounded-0 img-fluid" alt="product image" src='` + products[product].image[0]["image"] + `'>
                                                     <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                                         <ul class="list-unstyled">
-                                                            <li><a class="btn btn-primary text-white see" href="/products/`+ products[product].id + `">
+                                                            <li><a class="btn btn-primary text-white see" href="/products/` + products[product].id + `">
                                                                 مشاهده
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
                                                                  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
@@ -59,11 +58,24 @@ function pagination_func(url = '/rest/products_list') {
 
 
             // pagination buttons
-            let pagination = `<a href="#" onclick="pagination_func('`+ previous_page +`'); return false;">❮</a>
-                              <a href="#" onclick="pagination_func('`+ next_page +`'); return false;">❯</a>`
+            if (previous_page == null) {
+                let pagination = `<a href="#">❮</a>
+                              <a href="#" onclick="pagination_func('` + next_page + `'); return false;">❯</a>`
 
-            $('#pagination').append(pagination);
+                $('#pagination').append(pagination);
 
+            } else if (next_page == null) {
+                let pagination = `<a href="#" onclick="pagination_func('` + previous_page + `'); return false;">❮</a>
+                                  <a href="#">❯</a>`
+
+                $('#pagination').append(pagination);
+
+            } else {
+                let pagination = `<a href="#" onclick="pagination_func('` + previous_page + `'); return false;">❮</a>
+                                  <a href="#" onclick="pagination_func('` + next_page + `'); return false;">❯</a>`
+
+                $('#pagination').append(pagination);
+            }
 
         },
         error: function (e) {

@@ -30,9 +30,6 @@ class Product(models.Model):
     count = models.PositiveIntegerField(blank=True, null=True)
     image = models.ManyToManyField(ProductImage)
 
-    # Product views
-    views = models.PositiveIntegerField(default=0)
-
     UNAVAILABLE = False
     AVAILABLE = True
     status_type = (
@@ -45,8 +42,3 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
-
-    # def get_absolute_url(self):
-    #     # Each time user visits product
-    #     self.views += 1
-    #     return reverse("products:product-detail", kwargs={'id': self.id})

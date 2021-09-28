@@ -132,7 +132,25 @@
                   <td dir="ltr">{{ order.order_date|date:"Y-m-d H:i" }}</td>
                   <td>{{ order.order.total_price }} تومان</td>
                   <td>{{ order.delivery_status }}</td>
-                  <td><a href="#">نمایش</a></td>
+                  <td><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">نمایش</a></td>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">لیست محصولات</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        {{ order.products.all }}
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 </tr>
               {% endfor %}
               </tbody>

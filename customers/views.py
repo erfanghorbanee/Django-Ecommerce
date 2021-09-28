@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from .forms import DetailForm
-from orders.models import Order, OrderHistory
+from orders.models import OrderHistory
 from datetime import date, timedelta
 
 

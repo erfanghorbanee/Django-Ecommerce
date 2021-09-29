@@ -22,12 +22,12 @@ class UserSerializer(serializers.ModelSerializer):
 
     def validate_first_name(self, value):
         if not value:
-            raise serializers.ValidationError("First name can't be empty.")
+            raise serializers.ValidationError("First name can't be empty!")
         return value
 
     def validate_last_name(self, value):
         if not value:
-            raise serializers.ValidationError("Last name can't be empty.")
+            raise serializers.ValidationError("Last name can't be empty!")
         return value
 
 

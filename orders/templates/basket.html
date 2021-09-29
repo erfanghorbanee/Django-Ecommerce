@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+
+{% block title %}Basket{% endblock %}
+
+{% block Bootstrap %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css" integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{% static 'css/basket.css' %}">
+{% endblock %}
+
+{% block content %}
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">بازار</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="تبديل التنقل">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'products' %}">فروشگاه</a>
+              </li>
+
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                دسته&zwnj;بندی
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                  {% for category in categories %}
+                    <li><a class="dropdown-item" href="#">{{ category.title }}</a></li>
+                  {% endfor %}
+              </ul>
+          </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">درباره ما</a>
+              </li>
+          </ul>
+
+              <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="جستجو" aria-label="جستجو">
+                <button class="btn btn-outline-primary" type="submit">جستجو</button>
+              </form>
+
+            {% if user.is_authenticated %}
+              <div class="dropstart">
+                    <a class="btn  dropdown" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img class="Avatar " alt="Avatar " src="/static/img/profile.png">
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li>
+                            <p class="dropdown-header"><b>{{ user }}</b></p>
+                        </li>
+                        <li><a class="dropdown-item " href="{% url 'profile' %}">حساب شخصی</a></li>
+                        <li><a class="dropdown-item " href="">سبد</a></li>
+                        <li>
+                            <hr class="dropdown-divider ">
+                        </li>
+                        <li>
+                            <form method="post" action="{% url 'account_logout' %}">
+                              {% csrf_token %}
+                              {% if redirect_field_value %}
+                              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                              {% endif %}
+                              <button class="dropdown-item text-danger" type="submit">خروج</button>
+                            </form>
+                        </li>
+
+                    </ul>
+                </div>
+              {% else %}
+                <a class="login link-light" href="{% url 'account_login' %}">ورود</a>
+              {% endif %}
+
+          </div>
+        </div>
+      </nav>
+    </header>
+
+  <main class="container">
+    <div class="basket">
+      <div class="basket-module">
+        <label for="promo-code" dir="">کد تخفیف دارید؟ پس اینجا وارد کنید!</label>
+        <input id="promo-code" type="text" name="promo-code" maxlength="5" class="promo-code-field">
+        <button class="promo-code-cta  btn-primary">اعمال کد</button>
+      </div>
+      <div class="basket-labels">
+        <ul class="basket-ul">
+          <li class="item item-heading basket-li">محصول</li>
+          <li class="price basket-li">قیمت</li>
+          <li class="quantity basket-li">تعداد</li>
+          <li class="subtotal basket-li">مجموع قیمت</li>
+        </ul>
+      </div>
+      <div class="basket-product">
+        <div class="item">
+          <div class="product-image">
+            <img src="http://placehold.it/120x166" alt="Placholder Image 2" class="product-frame">
+          </div>
+          <div class="product-details">
+            <h1><strong><span class="item-quantity">4</span> x Eliza J</strong> Lace Sleeve Cuff Dress</h1>
+            <p><strong>Navy, Size 18</strong></p>
+            <p>Product Code - 232321939</p>
+          </div>
+        </div>
+        <div class="price">26.00</div>
+        <div class="quantity" dir>
+          <input type="number" value="4" min="1" class="quantity-field">
+        </div>
+        <div class="subtotal">104.00</div>
+        <div class="remove">
+          <button>حذف</button>
+        </div>
+      </div>
+
+    </div>
+    <aside>
+      <div class="summary">
+        <div class="summary-total-items"><span class="total-items"></span> محصول در سبد</div>
+        <div class="summary-subtotal">
+          <div class="subtotal-value final-value" id="basket-subtotal">130.00</div>
+          <div class="subtotal-title">قیمت</div>
+          <div class="summary-promo hide">
+            <div class="promo-title">Promotion</div>
+            <div class="promo-value final-value" id="basket-promo"></div>
+          </div>
+        </div>
+
+        <div class="summary-total">
+          <div class="total-value final-value" id="basket-total">130.00</div>
+          <div class="total-title">قیمت کل</div>
+        </div>
+        <div class="summary-checkout">
+          <button class="checkout-cta btn btn-primary">پرداخت</button>
+        </div>
+      </div>
+    </aside>
+  </main>
+{% endblock %}
+
+{% block js %}<script src="{% static 'js/basket.js' %}"></script>{% endblock %}

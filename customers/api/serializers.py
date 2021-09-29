@@ -49,6 +49,10 @@ class CustomRegisterSerializer(serializers.ModelSerializer):
 
         if password != password2:
             raise serializers.ValidationError({'password': 'Passwords must match.'})
+        elif len(password) < 8:
+            raise serializers.ValidationError({'password': 'This password is too short. '
+                                                           'It must contain at least 8 characters.'})
+
         user.set_password(password)
         user.save()
         return user

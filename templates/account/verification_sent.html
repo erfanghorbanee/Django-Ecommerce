@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% bootstrap_messages %}
+
+{% block title %}Verify Your E-mail Address{% endblock %}
+
+{% block style %}
+    body {
+        background-color: #F5F5F5;
+    }
+
+    .content {
+        text-align: center;
+    }
+
+    a {
+        font-size: 14px;
+        color: #666666;
+    }
+
+    a:focus {
+        outline: none !important;
+    }
+
+    a:hover {
+        text-decoration: none;
+        color: #333333;
+    }
+
+    h1 {
+        margin: 50px;
+        }
+{% endblock %}
+
+{% block header %}
+    <a style="text-align: right; margin-right: 10px; padding-top: 10px;" href="{% url 'home' %}">بازگشت به صفحه اصلی</a>
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <h1>لطفا پیش از ورود، ایمیل خود را تایید کنید.</h1>
+
+        <p>یک ایمیل حاوی لینک فعال سازی حساب کاربریتان به شما ارسال شده است.</p>
+        <p>در صورت عدم دریافت آن با کارشناسان ما تماس بگیرید.<p>
+    </div>
+{% endblock %}

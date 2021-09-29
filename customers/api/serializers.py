@@ -1,5 +1,4 @@
 from rest_framework import serializers
-
 from customers.models import Customer
 
 try:
@@ -21,6 +20,16 @@ class UserSerializer(serializers.ModelSerializer):
         model = Customer
         fields = ['id', 'email', 'first_name', 'last_name', 'phone', 'gender']
 
+    def validate_first_name(self, value):
+        if not value:
+            raise serializers.ValidationError("First name can't be empty.")
+        return value
+
+    def validate_last_name(self, value):
+        if not value:
+            raise serializers.ValidationError("Last name can't be empty.")
+        return value
+
 
 class CustomRegisterSerializer(serializers.ModelSerializer):
     password2 = serializers.CharField(style={'input_type': 'password'}, write_only=True)
@@ -40,8 +49,7 @@ class CustomRegisterSerializer(serializers.ModelSerializer):
             email=self.validated_data['email'],
             first_name=self.validated_data['first_name'],
             last_name=self.validated_data['last_name'],
-            phone=self.validated_data['phone'],
-            # gender=self.validated_data['gender']
+            phone=self.validated_data['phone']
         )
 
         password = self.validated_data['password']

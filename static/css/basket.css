@@ -91,7 +91,7 @@ button,
 .basket-product,
 .product-image,
 .product-details {
-  float: left;
+  float: right;
 }
 
 .subtotal-value:after,
@@ -106,7 +106,7 @@ button,
 
 main {
   clear: both;
-  font-size: 0.75rem;
+  font-size: 0.98rem;
   margin: 0 auto;
   overflow: hidden;
   padding: 1rem 0;
@@ -153,7 +153,7 @@ label {
 
 .promo-code-cta {
   border-radius: 4px;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   margin-left: 0.625rem;
   padding: 0.6875rem 1.25rem 0.625rem;
 }
@@ -197,10 +197,10 @@ li.subtotal:before {
 
 .remove {
   bottom: 1.125rem;
-  float: right;
+  float: left;
   position: absolute;
-  right: 0;
-  text-align: right;
+  left: 0;
+  text-align: left;
   width: 45%;
 }
 
@@ -208,8 +208,6 @@ li.subtotal:before {
   background-color: transparent;
   color: #777;
   float: none;
-  text-decoration: underline;
-  text-transform: uppercase;
 }
 
 .item-heading {
@@ -248,7 +246,7 @@ li.subtotal:before {
   background-color: #ccc;
   border: 1px solid #aaa;
   border-radius: 4px;
-  font-size: 0.625rem;
+  font-size: 0.7rem;
   padding: 2px;
   width: 3.75rem;
 }
@@ -272,7 +270,7 @@ aside {
 
 .summary-total-items {
   color: #666;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   text-align: center;
 }
 
@@ -337,7 +335,7 @@ aside {
 .checkout-cta {
   display: block;
   float: none;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   text-align: center;
   text-transform: uppercase;
   padding: 0.625rem 0;

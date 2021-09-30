@@ -11,7 +11,7 @@ body {
 }
 
 header {
-    margin-bottom: 100px;
+  margin-bottom: 115px;
 }
 
 .dropdown-item text-danger {
@@ -154,7 +154,7 @@ label {
 .promo-code-cta {
   border-radius: 4px;
   font-size: 0.75rem;
-  margin-left: 0.625rem;
+  margin-right: 0.625rem;
   padding: 0.6875rem 1.25rem 0.625rem;
 }
 
@@ -252,7 +252,7 @@ li.subtotal:before {
 }
 
 aside {
-  float: right;
+  float: left;
   position: relative;
   width: 30%;
 }

@@ -1,12 +1,29 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse
+from products.models import Product
 
 
 def basket_view(request):
-    if request.user.is_authenticated:
+    basket = request.session['basket']
+    print(basket)
+    product_list = dict()
+    for item in basket:
+        product = Product.objects.filter(id=item).first()
+        product_list[product] = basket[item]
 
-        context = {
-        }
-        return render(request, 'basket.html', context)
+    print(product_list)
 
-    return redirect(reverse("account_login"))
+    context = {
+        'products': product_list,
+    }
+
+    return render(request, 'basket.html', context)
+
+
+def add_to_basket(request):
+    product_id = request.POST['product-id']
+    product_quantity = request.POST['product-quanity']
+
+    request.session['basket'][str(product_id)] = product_quantity
+    print(request.session['basket'], "dddd")
+
+    return redirect("single_product", product_id=product_id)

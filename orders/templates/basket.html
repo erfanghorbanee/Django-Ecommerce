@@ -102,7 +102,7 @@
           <div class="basket-product">
             <div class="item">
               <div class="product-image">
-                <img src="/{{ key.image.first.image }}" alt="Placholder Image 2" class="product-frame">
+                <a href="{% url 'single_product' key.id %}"><img src="/{{ key.image.first.image }}" alt="Product Image" class="product-frame"></a>
               </div>
               <div class="product-details">
                 <h1><strong>{{ key.title }}</strong></h1>
@@ -115,6 +115,7 @@
             </div>
             <div class="subtotal">104.00 تومان</div>
             <div class="remove">
+              <button>
               <a href="{% url 'delete_from_basket' key.id %}">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                   <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>

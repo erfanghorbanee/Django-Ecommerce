@@ -23,7 +23,21 @@ def add_to_basket(request):
     product_id = request.POST['product-id']
     product_quantity = request.POST['product-quanity']
 
-    request.session['basket'][str(product_id)] = product_quantity
-    print(request.session['basket'], "dddd")
+    if not request.session.get('basket'):
+        request.session['basket'] = {
+            product_id: product_quantity
+        }
+
+    else:
+        # add new items to the basket
+        basket = request.session.get('basket')
+
+        basket[product_id] = product_quantity
+        request.session.modified = True
+
+    print(request.session.get('basket'))
 
     return redirect("single_product", product_id=product_id)
+
+
+

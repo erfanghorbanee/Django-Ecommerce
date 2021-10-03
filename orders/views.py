@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from products.models import Product
+from django.urls import reverse
 
 
 def basket_view(request):
@@ -50,6 +51,14 @@ def delete_from_basket(request, product_id):
     request.session.modified = True
 
     return redirect("basket")
+
+
+def checkout(request):
+    if request.user.is_authenticated:
+
+        return render(request, 'checkout.html')
+
+    return redirect(reverse("account_login"))
 
 
 

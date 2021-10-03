@@ -1,0 +1,286 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block Bootstrap %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css" integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/5.0/examples/carousel/carousel.rtl.css" rel="stylesheet">
+{% endblock %}
+
+{% block style %}
+
+    @import "compass/css3";
+
+    .dl-small {
+        margin-bottom: 4px;
+    }
+
+    body {
+        margin: 0 auto;
+        padding: 1em;
+        max-width: 800px;
+    }
+
+    .form-control {
+        width: auto;
+    }
+
+    .form-control-small {
+        width: 100px;
+    }
+
+    .form-control-large {
+        width: 310px;
+    }
+
+    .dropdown-item text-danger {
+        background: none!important;
+        border: none;
+        padding: 0!important;
+        color: #069;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+
+    .Avatar {
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        margin-right: 5px;
+    }
+
+    .login {
+        margin-right: 25px;
+        margin-left:  5px;
+    }
+
+    .navbar-custom {
+        background-color: #212934;
+    }
+
+    header {
+        margin-bottom: 100px;
+    }
+
+    h2 {
+        margin-top: 55px;
+        margin-bottom: 25px;
+    }
+
+    .bank_logo {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .btn-lg {
+        margin-top: 20px;
+    }
+
+    footer {
+        margin-bottom: 50px;
+    }
+{% endblock %}
+
+{% block content %}
+     <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">بازار</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="تبديل التنقل">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'products' %}">فروشگاه</a>
+              </li>
+
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                دسته&zwnj;بندی
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                  {% for category in categories %}
+                    <li><a class="dropdown-item" href="#">{{ category.title }}</a></li>
+                  {% endfor %}
+              </ul>
+          </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">درباره ما</a>
+              </li>
+          </ul>
+
+              <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="جستجو" aria-label="جستجو">
+                <button class="btn btn-outline-primary" type="submit">جستجو</button>
+              </form>
+
+            {% if user.is_authenticated %}
+              <div class="dropstart">
+                    <a class="btn  dropdown" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img class="Avatar " alt="Avatar " src="/static/img/profile.png">
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li>
+                            <p class="dropdown-header"><b>{{ user }}</b></p>
+                        </li>
+                        <li><a class="dropdown-item " href="{% url 'profile' %}">حساب شخصی</a></li>
+                        <li><a class="dropdown-item " href="{% url 'basket' %}">سبد</a></li>
+                        <li>
+                            <hr class="dropdown-divider ">
+                        </li>
+                        <li>
+                            <form method="post" action="{% url 'account_logout' %}">
+                              {% csrf_token %}
+                              {% if redirect_field_value %}
+                              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                              {% endif %}
+                              <button class="dropdown-item text-danger" type="submit">خروج</button>
+                            </form>
+                        </li>
+
+                    </ul>
+                </div>
+              {% else %}
+                <a class="login link-light" href="{% url 'account_login' %}">ورود</a>
+              {% endif %}
+
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-fluid">
+      <div class="page-header">
+        <h2>انتخاب نشانی ارسال </h2>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+
+
+          <div class="list-group">
+            <div class="list-group-item">
+              <div class="list-group-item-heading">
+                  <div class="row radio">
+                    <div class="col-xs-3">
+                      <label>
+                        <input type="radio" name="optionShipp" id="optionShipp1" value="option2">
+                        1509 Latona St
+                      </label>
+                    </div>
+                    <div class="col-xs-5">
+                      <dl class="dl-small">
+                        <dt>Miguel Perez</dt>
+                        <dd>1509 Latona St, Philadelphia, PA 19146 </dd>
+                      </dl>
+                      <button class="btn btn-sm">Edit</button>
+                      <button class="btn btn-sm btn-link">Delete this address</button>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="list-group-item">
+              <div class="list-group-item-heading">
+                  <div class="row">
+                    <div class="col-xs-3">
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="optionShipp" id="optionShipp2" value="option2" checked>
+                          A new address
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-xs-9">
+                      <form role="form" class="">
+                        <div class="form-group">
+                          <label for="inputname">Name</label>
+                          <input type="text" class="form-control form-control-large" id="inputname" placeholder="Enter name">
+                        </div>
+                        <div class="form-group">
+                          <label for="inputAddress1">Street address 1</label>
+                          <input type="text" class="form-control form-control-large" id="inputAddress1" placeholder="Enter address">
+                        </div>
+                        <div class="form-group">
+                          <label for="inputAddress2">Street address 2</label>
+                          <input type="text" class="form-control form-control-large" id="inputAddress2" placeholder="Enter address">
+                        </div>
+                        <div class="row">
+                          <div class="col-xs-3">
+                            <div class="form-group">
+                              <label for="inputZip">ZIP Code</label>
+                              <input type="text" class="form-control form-control-small" id="inputZip" placeholder="Enter zip">
+                            </div>
+                          </div>
+                          <div class="col-xs-9">
+                            <div class="form-group">
+                              <label for="inputCity">City</label>
+                              <input type="text" class="form-control" id="inputCity" placeholder="Enter city">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="inputState" class="control-label">State</label>
+                          <select class="form-control form-control-large">
+                            <option>Select state</option>
+                          </select>
+                        </div>
+                      </form>
+                      <button class="btn btn-sm">Save Address</button>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+          <h2>انتخاب درگاه پرداخت</h2>
+          <div class="list-group">
+
+            <div class="list-group-item">
+              <div class="list-group-item-heading">
+                  <div class="row radio">
+                    <div class="col-xs-3">
+                      <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                        <img class="bank_logo" src="{% static 'img/checkout/mellat_bank.webp' %}" height="60" alt="بانک ملت" />
+                        <p>درگاه بانک ملت | پرداخت آنلاین توسط درگاه بانک ملت</p>
+                      </label>
+                    </div>
+                  </div>
+              </div>
+            </div>
+
+            <div class="list-group-item">
+              <div class="list-group-item-heading">
+                  <div class="row radio">
+                    <div class="col-xs-3">
+                      <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                        <img class="bank_logo" src="{% static 'img/checkout/saman_bank.webp' %}" height="60" alt="بانک سامان" />
+                        <p>درگاه بانک سامان | پرداخت آنلاین توسط درگاه بانک سامان</p>
+                      </label>
+                    </div>
+                  </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="well">
+            <button type="button" class="btn btn-success btn-lg btn-block">پرداخت آنلاین</button>
+          </div>
+        </div>
+              <hr class="featurette-divider">
+      </div>
+
+      <!-- FOOTER -->
+      <footer class="container">
+        <p class="float-end"><a href="#">بازگشت به بالا</a></p>
+        <p> 2021–2020 &copy;  حقوق مطالب، تصاویر و طرح قالب برای سایت بازار محفوظ است.</p>
+      </footer>
+
+    </main>
+
+{% endblock %}

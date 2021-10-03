@@ -34,7 +34,7 @@ $('.promo-code-cta').click(function() {
   //If there is a promoPrice that has been set (it means there is a valid promoCode input) show promo
   if (promoPrice) {
     $('.summary-promo').removeClass('hide');
-    $('.promo-value').text(promoPrice.toFixed(2));
+    $('.promo-value').text(promoPrice);
     recalculateCart(true);
   }
 });
@@ -45,14 +45,14 @@ function recalculateCart(onlyTotal) {
 
   /* Sum up row totals */
   $('.basket-product').each(function() {
-    subtotal += parseFloat($(this).children('.subtotal').text());
+    subtotal += parseInt($(this).children('.subtotal').text());
   });
 
   /* Calculate totals */
   var total = subtotal;
 
   //If there is a valid promoCode, and subtotal < 10 subtract from total
-  var promoPrice = parseFloat($('.promo-value').text());
+  var promoPrice = parseInt($('.promo-value').text());
   if (promoPrice) {
     if (subtotal >= 10) {
       total -= promoPrice;
@@ -66,14 +66,14 @@ function recalculateCart(onlyTotal) {
   if (onlyTotal) {
     /* Update total display */
     $('.total-value').fadeOut(fadeTime, function() {
-      $('#basket-total').html(total.toFixed(2));
+      $('#basket-total').html(total);
       $('.total-value').fadeIn(fadeTime);
     });
   } else {
     /* Update summary display. */
     $('.final-value').fadeOut(fadeTime, function() {
-      $('#basket-subtotal').html(subtotal.toFixed(2));
-      $('#basket-total').html(total.toFixed(2));
+      $('#basket-subtotal').html(subtotal);
+      $('#basket-total').html(total);
       if (total == 0) {
         $('.checkout-cta').fadeOut(fadeTime);
       } else {
@@ -88,14 +88,14 @@ function recalculateCart(onlyTotal) {
 function updateQuantity(quantityInput) {
   /* Calculate line price */
   var productRow = $(quantityInput).parent().parent();
-  var price = parseFloat(productRow.children('.price').text());
+  var price = parseInt(productRow.children('.price').text());
   var quantity = $(quantityInput).val();
   var linePrice = price * quantity;
 
   /* Update line price display and recalc cart totals */
   productRow.children('.subtotal').each(function() {
     $(this).fadeOut(fadeTime, function() {
-      $(this).text(linePrice.toFixed(2));
+      $(this).text(linePrice);
       recalculateCart();
       $(this).fadeIn(fadeTime);
     });

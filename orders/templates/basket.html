@@ -111,9 +111,9 @@
             </div>
             <div class="price">{{ key.price }}</div>
             <div class="quantity">
-              <input type="number" value="{{ value }}" min="1" class="quantity-field">
+              <input type="number" value="{{ value }}" min="1" max="{{ key.count }}" class="quantity-field">
             </div>
-            <div class="subtotal">{% widthratio key.price 1 value %} تومان</div>
+            <div class="subtotal">{% widthratio key.price 1 value %}</div>
             <div class="remove">
               <button>
               <a href="{% url 'delete_from_basket' key.id %}">

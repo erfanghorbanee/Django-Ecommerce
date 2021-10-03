@@ -95,9 +95,10 @@ button,
 }
 
 .subtotal-value:after,
+.subtotal:after,
 .total-value:after,
 .promo-value:after {
-  content: 'تومان';
+  content: ' تومان';
 }
 
 .hide {

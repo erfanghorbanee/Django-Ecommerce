@@ -3,17 +3,14 @@ from products.models import Product
 
 
 def basket_view(request):
-    print(request.session.get('basket'))
     if request.session.get('basket'):
 
         basket = request.session.get('basket')
-        print(basket)
+
         product_list = dict()
         for item in basket:
             product = Product.objects.filter(id=item).first()
             product_list[product] = basket[item]
-
-        print(product_list)
 
         context = {
             'products': product_list,
@@ -42,8 +39,6 @@ def add_to_basket(request):
 
         basket[product_id] = product_quantity
         request.session.modified = True
-
-    print(request.session.get('basket'))
 
     return redirect("single_product", product_id=product_id)
 

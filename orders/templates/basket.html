@@ -113,7 +113,7 @@
             <div class="quantity">
               <input type="number" value="{{ value }}" min="1" class="quantity-field">
             </div>
-            <div class="subtotal">104.00 تومان</div>
+            <div class="subtotal">{% widthratio key.price 1 value %} تومان</div>
             <div class="remove">
               <button>
               <a href="{% url 'delete_from_basket' key.id %}">
@@ -132,7 +132,7 @@
       <div class="summary">
         <div class="summary-total-items"><span class="total-items"></span> محصول در سبد</div>
         <div class="summary-subtotal">
-          <div class="subtotal-value final-value" id="basket-subtotal">130.00</div>
+          <div class="subtotal-value final-value" id="basket-subtotal">0</div>
           <div class="subtotal-title">قیمت</div>
           <div class="summary-promo hide">
             <div class="promo-title">Promotion</div>
@@ -141,7 +141,7 @@
         </div>
 
         <div class="summary-total">
-          <div class="total-value final-value" id="basket-total">130.00</div>
+          <div class="total-value final-value" id="basket-total">0</div>
           <div class="total-title">قیمت کل</div>
         </div>
         <div class="summary-checkout">

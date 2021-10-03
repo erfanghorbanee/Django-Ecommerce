@@ -208,7 +208,7 @@
                             <h1 class="h2">{{ product.title }}</h1>
                             <p class="h3 py-2">{{ product.price }} تومان</p>
                             <p class="py-2">
-                                <span class="list-inline-item text-dark">Rating 4.8 | 36 Comments</span>
+                                <span class="list-inline-item text-dark">Rating {{ product.rate }} | 36 Comments</span>
                             </p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
@@ -226,7 +226,7 @@
                                     <h6>موجودی در انبار:</h6>
                                 </li>
                                 <li class="list-inline-item">
-                                    <p class="text"><strong>{{ product.count }}</strong></p>
+                                    <p class="text"><strong id="count">{{ product.count }}</strong></p>
                                 </li>
                             </ul>
 
@@ -266,7 +266,6 @@
     <!-- Close Content -->
 
     <script src="/static/js/templatemo.js"></script>
-    <script src="/static/js/pagination.js"></script>
 
 
     <!-- FOOTER -->

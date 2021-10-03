@@ -1,11 +1,3 @@
-/*
-
-TemplateMo 559 Zay Shop
-
-https://templatemo.com/tm-559-zay-shop
-
-*/
-
 'use strict';
 $(document).ready(function() {
 
@@ -38,9 +30,14 @@ $(document).ready(function() {
     });
     $('#btn-plus').click(function(){
       var val = $("#var-value").html();
-      val++;
-      $("#var-value").html(val);
-      $("#product-quanity").val(val);
+      if (val < $("#count").html()) {
+          val++;
+          $("#var-value").html(val);
+          $("#product-quanity").val(val);
+      } else {
+          alert("متاسفانه در حال حاضر امکان سفارش بیش از این تعداد مقدور نمیباشد.");
+      }
+
       return false;
     });
     $('.btn-size').click(function(){

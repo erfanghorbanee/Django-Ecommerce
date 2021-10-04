@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from customers.models import Customer
+from customers.models import Customer, DiscountCode, Address
 
 try:
     from allauth.account import app_settings as allauth_settings
@@ -64,3 +64,19 @@ class CustomRegisterSerializer(serializers.ModelSerializer):
         user.set_password(password)
         user.save()
         return user
+
+
+class DiscountCodeSerializer(serializers.ModelSerializer):
+    user = serializers.CharField(source='user.email')
+
+    class Meta:
+        model = DiscountCode
+        fields = '__all__'
+
+
+class AddressSerializer(serializers.ModelSerializer):
+    user = serializers.CharField(source='user.email')
+
+    class Meta:
+        model = Address
+        fields = '__all__'

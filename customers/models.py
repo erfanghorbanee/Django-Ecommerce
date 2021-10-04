@@ -44,9 +44,9 @@ class Address(models.Model):
 class DiscountCode(models.Model):
     user = models.ForeignKey(Customer, on_delete=models.CASCADE, blank=True, null=True)
     code = models.CharField(max_length=10)
-    amount = models.FloatField()
+    amount = models.PositiveIntegerField()
     start_date = models.DateTimeField()
     expire_date = models.DateTimeField()
 
     def __str__(self):
-        return self.amount + '%'
+        return str(self.amount) + '%'

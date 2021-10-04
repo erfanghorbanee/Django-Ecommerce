@@ -21,7 +21,6 @@
     body {
         margin: 0 auto;
         padding: 1em;
-        max-width: 800px;
     }
 
     .form-control {
@@ -80,8 +79,13 @@
     }
 
     footer {
-        margin-bottom: 50px;
+        margin-bottom: 80px;
     }
+
+    main {
+        max-width: 800px;
+    }
+
 {% endblock %}
 
 {% block content %}
@@ -272,15 +276,17 @@
             <button type="button" class="btn btn-success btn-lg btn-block">پرداخت آنلاین</button>
           </div>
         </div>
-              <hr class="featurette-divider">
+
       </div>
 
-      <!-- FOOTER -->
+    </main>
+
+    <!-- FOOTER -->
+
       <footer class="container">
+      <hr class="featurette-divider">
         <p class="float-end"><a href="#">بازگشت به بالا</a></p>
         <p> 2021–2020 &copy;  حقوق مطالب، تصاویر و طرح قالب برای سایت بازار محفوظ است.</p>
       </footer>
-
-    </main>
 
 {% endblock %}

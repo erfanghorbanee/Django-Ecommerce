@@ -58,7 +58,13 @@ function pagination_func(url = '/rest/products_list') {
 
 
             // pagination buttons
-            if (previous_page == null) {
+            if (previous_page == null && next_page == null) {
+                let pagination = `<a href="#">❮</a>
+                                  <a href="#">❯</a>`
+
+                $('#pagination').append(pagination);
+
+            } else if (previous_page == null) {
                 let pagination = `<a href="#">❮</a>
                               <a href="#" onclick="pagination_func('` + next_page + `'); return false;">❯</a>`
 

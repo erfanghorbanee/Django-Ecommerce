@@ -96,9 +96,12 @@ button,
 
 .subtotal-value:after,
 .subtotal:after,
-.total-value:after,
-.promo-value:after {
+.total-value:after {
   content: ' تومان';
+}
+
+.promo-value:after {
+  content: ' درصد';
 }
 
 .hide {
@@ -138,7 +141,6 @@ label {
 .promo-code-field {
   border: 1px solid #ccc;
   padding: 0.5rem;
-  text-transform: uppercase;
   transition: all 0.2s linear;
   width: 48%;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
@@ -343,15 +345,6 @@ aside {
   width: 100%;
 }
 
-/*.summary-delivery-selection {*/
-/*  background-color: #ccc;*/
-/*  border: 1px solid #aaa;*/
-/*  border-radius: 4px;*/
-/*  display: block;*/
-/*  font-size: 0.625rem;*/
-/*  height: 34px;*/
-/*  width: 100%;*/
-/*}*/
 
 @media screen and (max-width: 640px) {
   aside,

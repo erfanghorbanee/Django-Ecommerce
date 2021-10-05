@@ -1,7 +1,7 @@
-/* Set values + misc */
+/* Set values(using ajax) + misc */
 var promoCode;
 var promoPrice;
-var fadeTime = 300;
+var fadeTime = 150;
 
 /* Assign actions */
 $('.quantity input').change(function() {
@@ -16,27 +16,50 @@ $(document).ready(function() {
   updateSumItems();
 });
 
+
+// check if discount code is valid using ajax.
 $('.promo-code-cta').click(function() {
 
   promoCode = $('#promo-code').val();
 
-  if (promoCode == '10off' || promoCode == '10OFF') {
-    //If promoPrice has no value, set it as 10 for the 10OFF promocode
-    if (!promoPrice) {
-      promoPrice = 10;
-    } else if (promoCode) {
-      promoPrice = promoPrice * 1;
-    }
-  } else if (promoCode != '') {
-    alert("Invalid Promo Code");
-    promoPrice = 0;
-  }
-  //If there is a promoPrice that has been set (it means there is a valid promoCode input) show promo
-  if (promoPrice) {
-    $('.summary-promo').removeClass('hide');
-    $('.promo-value').text(promoPrice);
-    recalculateCart(true);
-  }
+  const data = {}
+
+    $.ajax({
+        type: "GET",
+        url: '/customer/rest/discount-code/?code=' + promoCode,
+        data: data,
+        processData: false,
+        contentType: false,
+        cache: false,
+        success: function (data) {
+            console.log('success');
+
+          if (data.length != 0) {
+
+            promoPrice = data[0]['amount']
+            console.log(promoPrice);
+
+              //If there is a promoPrice that has been set (it means there is a valid promoCode input) show promo.
+              if (promoPrice) {
+                $('.summary-promo').removeClass('hide');
+                $('.promo-value').text(promoPrice);
+                recalculateCart(true);
+              }
+
+          } else {
+            // if promoCode is not valid.
+            promoPrice = 0;
+            alert("این کد معتبر نیست!");
+          }
+        },
+
+        error: function (xhr) {
+
+            console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console.
+            alert(xhr.responseText);
+        }
+    });
+
 });
 
 /* Recalculate cart */
@@ -51,13 +74,13 @@ function recalculateCart(onlyTotal) {
   /* Calculate totals */
   var total = subtotal;
 
-  //If there is a valid promoCode, and subtotal < 10 subtract from total
+  //If there is a valid promoCode, and subtotal < 10000 subtract from total
   var promoPrice = parseInt($('.promo-value').text());
   if (promoPrice) {
-    if (subtotal >= 10) {
-      total -= promoPrice;
+    if (subtotal >= 10000) {
+      total -= promoPrice*total/100;
     } else {
-      alert('Order must be more than £10 for Promo code to apply.');
+      alert('برای استفاده از کد تخفیف باید مبلغ سفارشتان بیش از 10 هزار تومن باشد.');
       $('.summary-promo').addClass('hide');
     }
   }

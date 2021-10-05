@@ -1,4 +1,4 @@
-/* Set values(using ajax) + misc */
+/* Set values + misc */
 var promoCode;
 var promoPrice;
 var fadeTime = 150;

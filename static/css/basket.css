@@ -305,14 +305,14 @@ aside {
 
 .promo-title {
   float: left;
-  width: 70%;
+  width: 50%;
 }
 
 .promo-value {
   color: #8B0000;
   float: left;
   text-align: right;
-  width: 30%;
+  width: 50%;
 }
 
 .summary-delivery {

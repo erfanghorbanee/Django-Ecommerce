@@ -1,5 +1,4 @@
 function pagination_func(url = '/rest/products_list') {
-    // if (url != null) {    must add regex for null
 
     const data = {}
 
@@ -88,7 +87,7 @@ function pagination_func(url = '/rest/products_list') {
             console.log("ERROR : ", e);
         }
     });
-    // }
+
 }
 
 pagination_func();

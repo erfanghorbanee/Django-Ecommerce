@@ -7,14 +7,18 @@ def basket_view(request):
     if request.session.get('basket'):
 
         basket = request.session.get('basket')
-
+        total = 0  # total price
         product_list = dict()
+
         for item in basket:
             product = Product.objects.filter(id=item).first()
             product_list[product] = basket[item]
 
+            total += product.price * int(basket[item])
+
         context = {
             'products': product_list,
+            'total': total,
         }
 
         return render(request, 'basket.html', context)

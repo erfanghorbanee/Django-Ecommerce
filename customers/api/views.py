@@ -11,19 +11,24 @@ utc = pytz.UTC
 
 @api_view(['GET', ])
 def discount_code_view(request):
-    code = request.query_params.get('code')
-    if code is not None:
-        query_set = DiscountCode.objects.all().filter(user=request.user, code=code)
+    if request.user.is_authenticated:
 
-        serializer = DiscountCodeSerializer(query_set, many=True)
+        code = request.query_params.get('code')
+        if code is not None:
+            query_set = DiscountCode.objects.all().filter(user=request.user, code=code)
 
-        # check if query_set is not empty.
-        if query_set:
-            # check if discount code has expired.
-            if utc.localize(datetime.now()) > query_set.first().expire_date:
-                return Response({"error": "Sorry, your discount code has expired!"},
-                                status=status.HTTP_406_NOT_ACCEPTABLE)
+            serializer = DiscountCodeSerializer(query_set, many=True)
 
-        return Response(serializer.data, status=status.HTTP_200_OK)
+            # check if query_set is not empty.
+            if query_set:
+                # check if discount code has expired.
+                if utc.localize(datetime.now()) > query_set.first().expire_date:
+                    return Response({"error": "Sorry, your discount code has expired!"},
+                                    status=status.HTTP_406_NOT_ACCEPTABLE)
 
-    return Response(status=status.HTTP_400_BAD_REQUEST)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    return Response({"error": "You have to login first."},
+                    status=status.HTTP_406_NOT_ACCEPTABLE)

@@ -41,7 +41,6 @@
                 </svg>
               </a>
 
-            {% if user.is_authenticated %}
               <div class="dropstart">
                     <a class="btn  dropdown" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                         <img class="Avatar " alt="Avatar " src="/static/img/profile.png">
@@ -67,10 +66,6 @@
 
                     </ul>
                 </div>
-              {% else %}
-                <a class="login link-light" href="{% url 'account_login' %}">ورود</a>
-              {% endif %}
-
           </div>
         </div>
       </nav>

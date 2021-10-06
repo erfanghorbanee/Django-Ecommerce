@@ -21,19 +21,6 @@ class Order(models.Model):
     products = models.ManyToManyField(OrderItem)
     total_price = models.PositiveIntegerField()
 
-    def __str__(self):
-        return f"{self.user}"
-
-    def get_total(self):
-        total = 0
-        for product in self.products.all():
-            total += product.get_final_price()
-
-        return total
-
-
-class OrderHistory(models.Model):
-    order = models.OneToOneField(Order, on_delete=models.CASCADE)
     order_date = models.DateTimeField(blank=True, null=True)
     ref_code = models.CharField(max_length=10, blank=True, null=True)
 
@@ -52,4 +39,12 @@ class OrderHistory(models.Model):
     )
 
     def __str__(self):
-        return f"{self.order.user} | {self.id}"
+        return f"{self.user}"
+
+    def get_total(self):
+        total = 0
+        for product in self.products.all():
+            total += product.get_final_price()
+
+        return total
+

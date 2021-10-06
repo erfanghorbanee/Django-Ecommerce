@@ -4,16 +4,12 @@ from .models import Product, Category
 
 
 def home_view(request):
-    categories = Category.objects.all()
-    # print(Category.objects.all())
-    # print(Category.objects.prefetch_related('products').all())
-    print(request.user.is_authenticated)
-    print(request.user)
+    if request.user.is_authenticated:
+        print("user is authenticated as", request.user)
+    else:
+        print("user is not authenticated")
 
-    context = {
-        'categories': categories,
-    }
-    return render(request, 'products/home.html', context)
+    return render(request, 'products/home.html')
 
 
 def products_view(request):

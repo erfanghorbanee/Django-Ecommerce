@@ -21,7 +21,7 @@ def profile_view(request):
 def orders_history_view(request):
     if request.user.is_authenticated:
 
-        orders = Order.objects.all()
+        orders = Order.objects.filter(user__email=request.user).all()
 
         context = {
             'orders': orders,
@@ -35,7 +35,8 @@ def recent_orders_view(request):
     if request.user.is_authenticated:
 
         # orders in past 10 days
-        recent_orders = Order.objects.filter(order_date__range=(date.today() - timedelta(days=10), date.today()))
+        recent_orders = Order.objects.filter(order_date__range=(date.today() - timedelta(days=10), date.today()),
+                                             user__email=request.user).all()
 
         context = {
             'recent_orders': recent_orders,

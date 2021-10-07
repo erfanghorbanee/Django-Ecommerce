@@ -135,11 +135,11 @@
                 <tr>
                   <td>{{ order.ref_code }}</td>
                   <td dir="ltr">{{ order.order_date|date:"Y-m-d H:i" }}</td>
-                  <td>{{ order.order.total_price }} تومان</td>
+                  <td>{{ order.total_price }} تومان</td>
                   <td>{{ order.delivery_status }}</td>
-                  <td><a href="#" data-bs-toggle="modal" data-bs-target="#{{ order.ref_code }}">نمایش</a></td>
+                  <td><a href="#" data-bs-toggle="modal" data-bs-target="#i{{ order.ref_code }}">نمایش</a></td>
 
-                <div class="modal fade" id="{{ order.ref_code }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="i{{ order.ref_code }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -148,14 +148,14 @@
                       </div>
                       <div class="modal-body">
                       <div class="row">
-                        {% for product in order.order.products.all %}
+                        {% for product in order.products.all %}
 
                                   <div class="col-6">
                                     <div class="card text-center">
-                                      <a href="{% url 'single_product' product.id %}"><img src="/{{ product.image.first.image }}" class="card-img-top" alt="product image"></a>
+                                      <a href="{% url 'single_product' product.item.id %}"><img src="/{{ product.item.image.first.image }}" class="card-img-top" alt="product image"></a>
                                       <div class="card-body">
-                                        <h5 class="card-title">{{ product.title }}</h5>
-                                        <p class="card-text">{{ product.description }}</p>
+                                        <h5 class="card-title">{{ product.item.title }}</h5>
+                                        <p class="card-text">{{ product.item.description }}</p>
                                       </div>
                                     </div>
                                   </div>

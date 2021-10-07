@@ -63,6 +63,3 @@ def checkout(request):
         return render(request, 'checkout.html')
 
     return redirect(reverse("account_login"))
-
-
-

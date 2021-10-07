@@ -30,5 +30,6 @@ def discount_code_view(request):
 
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
-    return Response({"error": "You have to login first."},
+    return Response({"error": "لطفا ایتدا وارد اکانت خود شوید."},
                     status=status.HTTP_406_NOT_ACCEPTABLE)
+

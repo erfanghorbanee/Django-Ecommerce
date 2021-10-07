@@ -62,6 +62,7 @@ $('.promo-code-cta').click(function() {
 
 });
 
+
 /* Recalculate cart */
 function recalculateCart(onlyTotal) {
   var subtotal = 0;
@@ -107,6 +108,7 @@ function recalculateCart(onlyTotal) {
   }
 }
 
+
 /* Update quantity */
 function updateQuantity(quantityInput) {
   /* Calculate line price */
@@ -128,6 +130,7 @@ function updateQuantity(quantityInput) {
   updateSumItems();
 }
 
+
 function updateSumItems() {
   var sumItems = 0;
   $('.quantity input').each(function() {
@@ -135,6 +138,7 @@ function updateSumItems() {
   });
   $('.total-items').text(sumItems);
 }
+
 
 /* Remove item from cart */
 function removeItem(removeButton) {
@@ -146,3 +150,41 @@ function removeItem(removeButton) {
     updateSumItems();
   });
 }
+
+
+
+$(function() {
+   $.ajaxSetup({
+       headers: {
+         "X-CSRFToken": $('[name=csrfmiddlewaretoken]').val()
+       }
+   })
+});
+
+// send data to be saved in session
+$('.quantity-field').change(function() {
+
+  const data = {}
+
+    $.ajax({
+        url: "/order/update-session/",
+        type: "POST", // http method
+        data: {
+            new_quantity: $(this).val(),
+            product_id: $(this).attr('id'),
+        },
+
+        // handle a successful response
+        success: function () {
+            console.log("success"); // another sanity check
+        },
+
+        // handle a non-successful response
+        error: function (xhr) {
+
+            console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+            alert(xhr.responseText);
+        }
+    });
+
+});

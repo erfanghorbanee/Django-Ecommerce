@@ -26,6 +26,11 @@ def discount_code_view(request):
                     return Response({"error": "Sorry, your discount code has expired!"},
                                     status=status.HTTP_406_NOT_ACCEPTABLE)
 
+            # if discount code was valid, save it in session.
+            request.session['discount'] = {
+                code: query_set.first().amount,
+
+            }
             return Response(serializer.data, status=status.HTTP_200_OK)
 
         return Response(status=status.HTTP_400_BAD_REQUEST)

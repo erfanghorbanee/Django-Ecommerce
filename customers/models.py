@@ -2,8 +2,16 @@ from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import ugettext_lazy as _
+from django.core.exceptions import ValidationError
 
 from .managers import CustomUserManager
+
+
+def validate_only_one_instance(obj):
+    model = obj.__class__
+    print(obj.user)
+    if model.objects.filter(user=obj.user).count() > 2:
+        raise ValidationError("Can only create 2 %s instance with same user" % model.__name__)
 
 
 class Customer(AbstractUser):
@@ -35,7 +43,10 @@ class Address(models.Model):
     postcode = models.CharField(max_length=12)
 
     def __str__(self):
-        return self.user.username
+        return self.user.email
+
+    def clean(self):
+        validate_only_one_instance(self)
 
     class Meta:
         verbose_name_plural = 'Addresses'

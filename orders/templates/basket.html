@@ -141,7 +141,11 @@
           <div class="total-title">قیمت کل</div>
         </div>
         <div class="summary-checkout">
-          <a href="{% url 'checkout' %}"><button class="checkout-cta btn btn-primary">پرداخت</button></a>
+            {% if products %}
+                <a href="{% url 'checkout' %}"><button class="checkout-cta btn btn-primary">پرداخت</button></a>
+            {% else %}
+                <a href="#"><button class="checkout-cta btn btn-primary">پرداخت</button></a>
+            {% endif %}
         </div>
       </div>
     </aside>

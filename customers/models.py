@@ -39,8 +39,10 @@ class Customer(AbstractUser):
 
 class Address(models.Model):
     user = models.ForeignKey(Customer, on_delete=models.CASCADE, blank=False, null=False)
+    province = models.CharField(max_length=100, blank=False, null=False)
+    city = models.CharField(max_length=100, blank=False, null=False)
+    postcode = models.CharField(max_length=12, blank=False, null=False)
     address = models.CharField(max_length=1200, blank=False, null=False)
-    postcode = models.CharField(max_length=12)
 
     def __str__(self):
         return self.user.email

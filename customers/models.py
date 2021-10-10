@@ -10,7 +10,7 @@ from .managers import CustomUserManager
 def validate_only_one_instance(obj):
     model = obj.__class__
     print(obj.user)
-    if model.objects.filter(user=obj.user).count() > 2:
+    if model.objects.filter(user=obj.user).count() > 1:
         raise ValidationError("Can only create 2 %s instance with same user" % model.__name__)
 
 

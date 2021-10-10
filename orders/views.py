@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from products.models import Product
+from customers.models import Address
 from django.urls import reverse
 
 
@@ -59,7 +60,12 @@ def delete_from_basket(request, product_id):
 
 def checkout(request):
     if request.user.is_authenticated:
+        address_list = Address.objects.filter(user__email=request.user).all()
 
-        return render(request, 'checkout.html')
+        context = {
+            'address_list': address_list,
+        }
+
+        return render(request, 'checkout.html', context)
 
     return redirect(reverse("account_login"))

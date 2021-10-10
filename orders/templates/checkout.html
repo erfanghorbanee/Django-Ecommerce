@@ -80,77 +80,82 @@
 
 
           <div class="list-group">
-            <div class="list-group-item">
-              <div class="list-group-item-heading">
-                  <div class="row radio">
-                    <div class="col-xs-3">
-                      <label>
-                        <input type="radio" name="optionShipp" id="optionShipp1" value="option2">
-                        1509 Latona St
-                      </label>
-                    </div>
-                    <div class="col-xs-5">
-                      <dl class="dl-small">
-                        <dt>Miguel Perez</dt>
-                        <dd>1509 Latona St, Philadelphia, PA 19146 </dd>
-                      </dl>
-                      <button class="btn btn-sm">Edit</button>
-                      <button class="btn btn-sm btn-link">Delete this address</button>
-                    </div>
-                  </div>
-              </div>
-            </div>
-            <div class="list-group-item">
-              <div class="list-group-item-heading">
-                  <div class="row">
-                    <div class="col-xs-3">
-                      <div class="radio">
-                        <label>
-                          <input type="radio" name="optionShipp" id="optionShipp2" value="option2" checked>
-                          A new address
-                        </label>
+              {% for address in address_list %}
+                <div class="list-group-item">
+                  <div class="list-group-item-heading">
+                      <div class="row radio">
+                        <div class="col-xs-3">
+                          <label>
+                            <input type="radio" name="optionShipp" id="optionShipp1" value="option2">
+                              {{ address.address }}
+                          </label>
+                        </div>
+                        <div class="col-xs-5">
+                          <dl class="dl-small">
+                            <dt>{{ address.address }}</dt>
+                            <dd> کد پستی: {{ address.postcode }}</dd>
+                          </dl>
+                          <button class="btn btn-sm">Edit</button>
+                          <button class="btn btn-sm btn-link">Delete this address</button>
+                        </div>
                       </div>
-                    </div>
-                    <div class="col-xs-9">
-                      <form role="form" class="">
-                        <div class="form-group">
-                          <label for="inputname">Name</label>
-                          <input type="text" class="form-control form-control-large" id="inputname" placeholder="Enter name">
-                        </div>
-                        <div class="form-group">
-                          <label for="inputAddress1">Street address 1</label>
-                          <input type="text" class="form-control form-control-large" id="inputAddress1" placeholder="Enter address">
-                        </div>
-                        <div class="form-group">
-                          <label for="inputAddress2">Street address 2</label>
-                          <input type="text" class="form-control form-control-large" id="inputAddress2" placeholder="Enter address">
-                        </div>
-                        <div class="row">
-                          <div class="col-xs-3">
-                            <div class="form-group">
-                              <label for="inputZip">ZIP Code</label>
-                              <input type="text" class="form-control form-control-small" id="inputZip" placeholder="Enter zip">
-                            </div>
-                          </div>
-                          <div class="col-xs-9">
-                            <div class="form-group">
-                              <label for="inputCity">City</label>
-                              <input type="text" class="form-control" id="inputCity" placeholder="Enter city">
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label for="inputState" class="control-label">State</label>
-                          <select class="form-control form-control-large">
-                            <option>Select state</option>
-                          </select>
-                        </div>
-                      </form>
-                      <button class="btn btn-sm">Save Address</button>
-                    </div>
                   </div>
-              </div>
-            </div>
+                </div>
+              {% endfor %}
+
+              {% if address_list|length < 2 %}
+                <div class="list-group-item">
+                  <div class="list-group-item-heading">
+                      <div class="row">
+                        <div class="col-xs-3">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="optionShipp" id="optionShipp2" value="option2" checked>
+                              A new address
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-xs-9">
+                          <form role="form" class="">
+                            <div class="form-group">
+                              <label for="inputname">Name</label>
+                              <input type="text" class="form-control form-control-large" id="inputname" placeholder="Enter name">
+                            </div>
+                            <div class="form-group">
+                              <label for="inputAddress1">Street address 1</label>
+                              <input type="text" class="form-control form-control-large" id="inputAddress1" placeholder="Enter address">
+                            </div>
+                            <div class="form-group">
+                              <label for="inputAddress2">Street address 2</label>
+                              <input type="text" class="form-control form-control-large" id="inputAddress2" placeholder="Enter address">
+                            </div>
+                            <div class="row">
+                              <div class="col-xs-3">
+                                <div class="form-group">
+                                  <label for="inputZip">ZIP Code</label>
+                                  <input type="text" class="form-control form-control-small" id="inputZip" placeholder="Enter zip">
+                                </div>
+                              </div>
+                              <div class="col-xs-9">
+                                <div class="form-group">
+                                  <label for="inputCity">City</label>
+                                  <input type="text" class="form-control" id="inputCity" placeholder="Enter city">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="inputState" class="control-label">State</label>
+                              <select class="form-control form-control-large">
+                                <option>Select state</option>
+                              </select>
+                            </div>
+                          </form>
+                          <button class="btn btn-sm">Save Address</button>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              {% endif %}
           </div>
 
           <h2>انتخاب درگاه پرداخت</h2>

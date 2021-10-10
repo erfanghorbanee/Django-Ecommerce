@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from products.models import Product
 from customers.models import Address
 from django.urls import reverse
+from customers.forms import AddressForm
 
 
 def basket_view(request):
@@ -62,8 +63,15 @@ def checkout(request):
     if request.user.is_authenticated:
         address_list = Address.objects.filter(user__email=request.user).all()
 
+        form = AddressForm(request.POST or None, initial={'user': request.user})
+
+        if form.is_valid():
+            # save the form data to model
+            form.save()
+
         context = {
             'address_list': address_list,
+            'form': form,
         }
 
         return render(request, 'checkout.html', context)

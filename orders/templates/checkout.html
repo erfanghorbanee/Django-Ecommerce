@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load bootstrap4 %}
 
 {% block title %}Checkout{% endblock %}
 
@@ -87,7 +88,7 @@
                         <div class="col-xs-3">
                           <label>
                             <input type="radio" name="optionShipp" id="optionShipp1" value="option2">
-                              {{ address.address }}
+                              {{ address.province }} - {{ address.city }}
                           </label>
                         </div>
                         <div class="col-xs-5">
@@ -111,46 +112,21 @@
                           <div class="radio">
                             <label>
                               <input type="radio" name="optionShipp" id="optionShipp2" value="option2" checked>
-                              A new address
+                              آدرس جدید
                             </label>
                           </div>
                         </div>
                         <div class="col-xs-9">
-                          <form role="form" class="">
-                            <div class="form-group">
-                              <label for="inputname">Name</label>
-                              <input type="text" class="form-control form-control-large" id="inputname" placeholder="Enter name">
-                            </div>
-                            <div class="form-group">
-                              <label for="inputAddress1">Street address 1</label>
-                              <input type="text" class="form-control form-control-large" id="inputAddress1" placeholder="Enter address">
-                            </div>
-                            <div class="form-group">
-                              <label for="inputAddress2">Street address 2</label>
-                              <input type="text" class="form-control form-control-large" id="inputAddress2" placeholder="Enter address">
-                            </div>
-                            <div class="row">
-                              <div class="col-xs-3">
-                                <div class="form-group">
-                                  <label for="inputZip">ZIP Code</label>
-                                  <input type="text" class="form-control form-control-small" id="inputZip" placeholder="Enter zip">
-                                </div>
-                              </div>
-                              <div class="col-xs-9">
-                                <div class="form-group">
-                                  <label for="inputCity">City</label>
-                                  <input type="text" class="form-control" id="inputCity" placeholder="Enter city">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <label for="inputState" class="control-label">State</label>
-                              <select class="form-control form-control-large">
-                                <option>Select state</option>
-                              </select>
-                            </div>
+
+                          <form role="form" class="" method="post" action="{% url 'checkout' %}">
+                              {% csrf_token %}
+                              {% bootstrap_form form %}
+
+                              <button class="btn btn-sm btn-dark" type="submit">ذخیره</button>
                           </form>
-                          <button class="btn btn-sm">Save Address</button>
+
+
+
                         </div>
                       </div>
                   </div>

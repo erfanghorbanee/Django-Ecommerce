@@ -79,10 +79,13 @@ class AddressForm(forms.ModelForm):
 
     class Meta:
         model = Address
-        fields = ('province', 'city', 'postcode', 'address')
+        fields = '__all__'
         labels = {
             'province': 'استان',
             'city': 'شهر',
             'postcode': 'کد پستی',
             'address': 'نشانی   ',
+        }
+        widgets = {
+            'user': forms.HiddenInput(),
         }

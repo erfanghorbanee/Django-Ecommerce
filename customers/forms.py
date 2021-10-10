@@ -1,7 +1,7 @@
 from allauth.account.forms import SignupForm, ChangePasswordForm
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import Customer
+from .models import Customer, Address
 
 
 class CustomSignupForm(SignupForm):
@@ -74,3 +74,15 @@ class CustomChangePasswordForm(ChangePasswordForm):
             'placeholder': 'تکرار گذرواژه جدید'
         })
 
+
+class AddressForm(forms.ModelForm):
+
+    class Meta:
+        model = Address
+        fields = ('province', 'city', 'postcode', 'address')
+        labels = {
+            'province': 'استان',
+            'city': 'شهر',
+            'postcode': 'کد پستی',
+            'address': 'نشانی   ',
+        }

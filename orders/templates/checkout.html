@@ -96,8 +96,7 @@
                             <dt>{{ address.address }}</dt>
                             <dd> کد پستی: {{ address.postcode }}</dd>
                           </dl>
-                          <button class="btn btn-sm">Edit</button>
-                          <button class="btn btn-sm btn-link">Delete this address</button>
+                          <a  href="{% url 'delete_address' address.id %}"><button class="btn btn-sm text-danger">حذف نشانی</button></a>
                         </div>
                       </div>
                   </div>

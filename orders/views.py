@@ -77,3 +77,15 @@ def checkout(request):
         return render(request, 'checkout.html', context)
 
     return redirect(reverse("account_login"))
+
+
+def delete_address(request, address_id):
+    if request.user.is_authenticated:
+
+        address = Address.objects.filter(pk=address_id)
+        address.delete()
+
+        return redirect(reverse("checkout"))
+
+    return redirect(reverse("account_login"))
+

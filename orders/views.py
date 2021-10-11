@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from products.models import Product
 from customers.models import Address
+from orders.models import Order, OrderItem
 from django.urls import reverse
 from customers.forms import AddressForm
+import random
 
 
 def basket_view(request):
@@ -86,6 +88,47 @@ def delete_address(request, address_id):
         address.delete()
 
         return redirect(reverse("checkout"))
+
+    return redirect(reverse("account_login"))
+
+
+def create_order(request):
+    if request.user.is_authenticated:
+        address = Address.objects.filter(pk=request.POST['address']).first()
+        order_item_list = list()  # products in user basket
+        ref_code = random.randrange(1, 10000000)
+        total_price = 0
+
+        basket = request.session['basket']
+
+        # data in basket is in this format ==> {product_id: quantity, ...}
+        for product_id in basket:
+            item = Product.objects.filter(pk=product_id).first()
+            quantity = basket[product_id]
+            order_item = OrderItem.objects.create(item=item, quantity=quantity)
+            order_item_list.append(order_item)
+            total_price += item.price * int(quantity)
+
+        # if user entered discount code
+        if request.session.get('discount'):
+            amount = list(request.session.get('discount').values())[0]
+            total_price -= int((total_price * amount)/100)
+
+        # create order
+        order = Order.objects.create(user=request.user,
+                                     address=address,
+                                     ref_code=ref_code,
+                                     total_price=total_price,
+                                     )
+        order.products.add(*order_item_list)
+
+        # clear basket
+        del request.session['basket']
+
+        # clear discount code
+        del request.session['discount']
+
+        return redirect(reverse("orders"))
 
     return redirect(reverse("account_login"))
 

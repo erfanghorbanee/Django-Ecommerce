@@ -78,39 +78,43 @@
       </div>
       <div class="row">
         <div class="col-xs-12">
-
-
           <div class="list-group">
+
+              <form method="post" id="checkout" action="{% url 'create_order' %}">
+              {% csrf_token %}
+
               {% for address in address_list %}
                 <div class="list-group-item">
                   <div class="list-group-item-heading">
-                      <div class="row radio">
-                        <div class="col-xs-3">
-                          <label>
-                            <input type="radio" name="optionShipp" id="optionShipp1" value="option2">
-                              {{ address.province }} - {{ address.city }}
-                          </label>
-                        </div>
+                      <div class="row">
+
+                              <div class="col-xs-3 form-check">
+                              <label>
+                                <input type="radio" name="address" value="{{ address.id }}">
+                                  {{ address.province }} - {{ address.city }}
+                              </label>
+                              </div>
+
                         <div class="col-xs-5">
                           <dl class="dl-small">
                             <dt>{{ address.address }}</dt>
                             <dd> کد پستی: {{ address.postcode }}</dd>
                           </dl>
-                          <a  href="{% url 'delete_address' address.id %}"><button class="btn btn-sm text-danger">حذف نشانی</button></a>
+                          <a  class="btn btn-sm text-danger" href="{% url 'delete_address' address.id %}">حذف نشانی</a>
                         </div>
                       </div>
                   </div>
                 </div>
               {% endfor %}
+              </form>
 
               {% if address_list|length < 2 %}
                 <div class="list-group-item">
                   <div class="list-group-item-heading">
                       <div class="row">
                         <div class="col-xs-3">
-                          <div class="radio">
+                          <div class="">
                             <label>
-                              <input type="radio" name="optionShipp" id="optionShipp2" value="option2" checked>
                               آدرس جدید
                             </label>
                           </div>
@@ -166,7 +170,7 @@
 
           </div>
           <div class="well">
-            <button type="button" class="btn btn-success btn-lg btn-block">پرداخت آنلاین</button>
+            <button type="submit" form="checkout" class="btn btn-success btn-lg btn-block">پرداخت آنلاین</button>
           </div>
         </div>
 

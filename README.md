@@ -24,6 +24,20 @@ $ . venv/bin/activate
 ```bash
 $ pip3 install -r requirements.txt
 ```
+##### In settings.py, set up the database
+for this project i used postgress, you can see the following setting below:
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'db_name',
+        'USER': 'db_user',
+        'PASSWORD': 'db_user_password',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
+```
 
 #####  Run makemigrations and migrate :
 ```bash

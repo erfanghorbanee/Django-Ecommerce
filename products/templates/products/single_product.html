@@ -246,7 +246,11 @@
                                         <a style="height: 50px;" href="{% url 'basket' %}" class="btn btn-primary"><span class="btn-lg">خرید</span></a>
                                     </div>
                                     <div class="col d-grid">
-                                        <button type="submit" class="btn btn-primary btn-lg" name="submit" value="addtocard">افزودن به سبد</button>
+                                        {% if product.count == 0 %}
+                                            <button type="button" class="btn btn-primary btn-lg" name="submit" value="addtocard">افزودن به سبد</button>
+                                        {% else %}
+                                            <button type="submit" class="btn btn-primary btn-lg" name="submit" value="addtocard">افزودن به سبد</button>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </form>

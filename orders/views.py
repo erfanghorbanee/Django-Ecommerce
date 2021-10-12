@@ -103,16 +103,22 @@ def create_order(request):
 
         # data in basket is in this format ==> {product_id: quantity, ...}
         for product_id in basket:
-            item = Product.objects.filter(pk=product_id).first()
-            quantity = basket[product_id]
+            item = Product.objects.filter(pk=product_id).first()  # number of existing product in shop
+            quantity = basket[product_id]  # number of product that user wants to buy
+
+            if item.count >= int(quantity):
+                Product.objects.filter(pk=product_id).update(count=item.count - int(quantity))  # Reduce inventory
+
             order_item = OrderItem.objects.create(item=item, quantity=quantity)
             order_item_list.append(order_item)
-            total_price += item.price * int(quantity)
+            total_price += item.price * int(quantity)  # calculate total price
 
         # if user entered discount code
         if request.session.get('discount'):
             amount = list(request.session.get('discount').values())[0]
             total_price -= int((total_price * amount)/100)
+
+            del request.session['discount']  # clear discount code
 
         # create order
         order = Order.objects.create(user=request.user,
@@ -124,9 +130,6 @@ def create_order(request):
 
         # clear basket
         del request.session['basket']
-
-        # clear discount code
-        del request.session['discount']
 
         return redirect(reverse("orders"))
 

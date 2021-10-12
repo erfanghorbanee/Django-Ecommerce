@@ -92,7 +92,7 @@ DATABASES = {
         'USER': 'efi',
         'PASSWORD': 'passwordunique',
         'HOST': 'localhost',
-        'POST': '',
+        'PORT': '',
     }
 }
 

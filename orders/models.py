@@ -36,5 +36,5 @@ class Order(models.Model):
     )
 
     def __str__(self):
-        return f"{self.user}"
+        return f"{self.user} | {self.ref_code}"
 

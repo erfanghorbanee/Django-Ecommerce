@@ -99,7 +99,7 @@ def create_order(request):
         ref_code = random.randrange(1, 10000000)
         total_price = 0
 
-        basket = request.session['basket']
+        basket = request.session.get('basket')
 
         # data in basket is in this format ==> {product_id: quantity, ...}
         for product_id in basket:

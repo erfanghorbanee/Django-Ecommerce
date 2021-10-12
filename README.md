@@ -5,26 +5,30 @@ An e-commerce website using the Django framework.
 ## How run the project?
 
 
-##### Clone the repository :
+#### Clone the repository :
 ```bash
 $ git clone https://github.com/erfanghorbanee/django-ecommerce.git
 $ cd django-ecommerce
 ```
-##### Create a virtualenv and activate it:
+
+#### Create a virtualenv and activate it:
  ```bash
 $ python3 -m venv venv
 $ . venv/bin/activate
 ```
-##### Or on Windows cmd : 
+
+#### Or on Windows cmd : 
  ```bash
 > py -3 -m venv venv
 > venv\Scripts\activate.bat
 ```
-##### Install the requirements :
+
+#### Install the requirements :
 ```bash
 $ pip3 install -r requirements.txt
 ```
-##### In settings.py, set up the database
+
+#### In settings.py, set up the database
 for this project i used postgress, you can see the following setting below:
 ```
 DATABASES = {
@@ -39,7 +43,7 @@ DATABASES = {
 }
 ```
 
-#####  Run makemigrations and migrate :
+####  Run makemigrations and migrate :
 ```bash
 python3 manage.py makemigrations
 python3 manage.py migrate

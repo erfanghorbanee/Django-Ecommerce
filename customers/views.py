@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from .forms import DetailForm
 from orders.models import Order
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 
 
 def profile_view(request):
@@ -35,7 +35,7 @@ def recent_orders_view(request):
     if request.user.is_authenticated:
 
         # orders in past 10 days
-        recent_orders = Order.objects.filter(order_date__range=(date.today() - timedelta(days=10), date.today()),
+        recent_orders = Order.objects.filter(order_date__range=(datetime.now() - timedelta(days=10), datetime.now()),
                                              user__email=request.user).all()
 
         context = {

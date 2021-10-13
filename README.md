@@ -49,11 +49,17 @@ python3 manage.py makemigrations
 python3 manage.py migrate
 ```
 
-#####  Run the development server :
+#### Run the tests :
+```bash
+python3 manage.py test
+```
+
+#### Run the development server :
 ```bash
 python3 manage.py runserver
 ```
+
 Open http://127.0.0.1:8000 in your browser. 
 
 ## License
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)

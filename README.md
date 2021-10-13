@@ -28,7 +28,7 @@ $ . venv/bin/activate
 $ pip3 install -r requirements.txt
 ```
 
-#### In settings.py, set up the database
+#### In settings.py, set up the database :
 for this project i used postgress, you can see the following settings below :
 ```
 DATABASES = {

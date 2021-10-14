@@ -1,4 +1,4 @@
-# django-ecommerce
+# Django-Ecommerce
 An e-commerce website using the Django framework.
 
 

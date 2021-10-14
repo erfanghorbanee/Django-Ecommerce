@@ -30,7 +30,7 @@ $(document).ready(function() {
     });
     $('#btn-plus').click(function(){
       var val = $("#var-value").html();
-      if (val < $("#count").html()) {
+      if (val < parseInt($("#count").html())) {
           val++;
           $("#var-value").html(val);
           $("#product-quanity").val(val);

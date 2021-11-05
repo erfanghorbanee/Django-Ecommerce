@@ -15,7 +15,7 @@ def basket_view(request):
         product_list = dict()
 
         for item in basket:
-            product = Product.objects.filter(id=item).first()
+            product = Product.objects.get(pk=item)  # to get a single unique object, we use get.
             product_list[product] = basket[item]
 
             total += product.price * int(basket[item])
@@ -94,7 +94,7 @@ def delete_address(request, address_id):
 
 def create_order(request):
     if request.user.is_authenticated:
-        address = Address.objects.filter(pk=request.POST['address']).first()
+        address = Address.objects.get(pk=request.POST['address'])
         order_item_list = list()  # products in user basket
         ref_code = random.randrange(1, 10000000)
         total_price = 0

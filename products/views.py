@@ -22,7 +22,7 @@ def products_view(request):
 
 
 def single_product_view(request, product_id):
-    product = Product.objects.filter(id=product_id).first()
+    product = Product.objects.get(pk=product_id)  # to get a single unique object, we use get.
 
     context = {
         'product': product,

@@ -1,8 +1,11 @@
-from django.shortcuts import render, redirect
+from datetime import date, datetime, timedelta
+
+from django.shortcuts import redirect, render
 from django.urls import reverse
-from .forms import DetailForm
+
 from orders.models import Order
-from datetime import date, timedelta, datetime
+
+from .forms import DetailForm
 
 
 def profile_view(request):

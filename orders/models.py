@@ -1,8 +1,9 @@
-from django.db import models
 from django.conf import settings
+from django.db import models
+from django.utils import timezone
+
 from customers.models import Address
 from products.models import Product
-from django.utils import timezone
 
 
 class OrderItem(models.Model):

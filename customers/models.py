@@ -1,8 +1,8 @@
-from django.db import models
-from phonenumber_field.modelfields import PhoneNumberField
 from django.contrib.auth.models import AbstractUser
-from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ValidationError
+from django.db import models
+from django.utils.translation import ugettext_lazy as _
+from phonenumber_field.modelfields import PhoneNumberField
 
 from .managers import CustomUserManager
 

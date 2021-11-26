@@ -1,7 +1,7 @@
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.shortcuts import reverse
 from django.utils.text import slugify
-from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class Category(models.Model):

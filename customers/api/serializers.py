@@ -1,14 +1,15 @@
 from rest_framework import serializers
-from customers.models import Customer, DiscountCode, Address
+
+from customers.models import Address, Customer, DiscountCode
 
 try:
     from allauth.account import app_settings as allauth_settings
-    from allauth.utils import email_address_exists, get_username_max_length
     from allauth.account.adapter import get_adapter
     from allauth.account.utils import setup_user_email
     from allauth.socialaccount.helpers import complete_social_login
     from allauth.socialaccount.models import SocialAccount
     from allauth.socialaccount.providers.base import AuthProcess
+    from allauth.utils import email_address_exists, get_username_max_length
 except ImportError:
     raise ImportError("allauth needs to be added to INSTALLED_APPS.")
 

@@ -1,10 +1,12 @@
-from django.shortcuts import render, redirect
-from products.models import Product
+import random
+
+from django.shortcuts import redirect, render
+from django.urls import reverse
+
+from customers.forms import AddressForm
 from customers.models import Address
 from orders.models import Order, OrderItem
-from django.urls import reverse
-from customers.forms import AddressForm
-import random
+from products.models import Product
 
 
 def basket_view(request):

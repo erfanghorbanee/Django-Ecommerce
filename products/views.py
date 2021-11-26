@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
-from .models import Product, Category
+
+from .models import Category, Product
 
 
 def home_view(request):

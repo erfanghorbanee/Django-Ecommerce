@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Product, Category, ProductImage
+
+from .models import Category, Product, ProductImage
 
 
 # A class that displays Product in a table form

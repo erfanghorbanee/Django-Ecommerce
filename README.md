@@ -3,6 +3,9 @@
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/49264993/140760716-f85871e9-8563-4ceb-9323-51ee81c46424.gif)
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 
 ## How run the project?
 
@@ -62,6 +65,3 @@ python3 manage.py runserver
 ```
 
 Open http://127.0.0.1:8000 in your browser. 
-
-## License
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)

@@ -35,6 +35,7 @@ def basket_view(request):
 def add_to_basket(request):
     product_id = request.POST['product-id']
     product_quantity = request.POST['product-quanity']
+    product_slug = request.POST['product-slug']
 
     # add first item to the basket
     if not request.session.get('basket'):
@@ -49,7 +50,7 @@ def add_to_basket(request):
         basket[product_id] = product_quantity
         request.session.modified = True
 
-    return redirect("single_product", product_id=product_id)
+    return redirect("single_product", slug=product_slug)
 
 
 def delete_from_basket(request, product_id):

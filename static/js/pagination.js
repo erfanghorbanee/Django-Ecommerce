@@ -28,7 +28,7 @@ function pagination_func(url = '/rest/products_list') {
                                                     <img class="card-img rounded-0 img-fluid" alt="product image" src='` + products[product].image[0]["image"] + `'>
                                                     <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                                         <ul class="list-unstyled">
-                                                            <li><a class="btn btn-primary text-white see" href="/products/` + products[product].id + `">
+                                                            <li><a class="btn btn-primary text-white see" href="/products/` + products[product].slug + `">
                                                                 مشاهده
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
                                                                  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>

@@ -228,6 +228,7 @@
                             <form action="{% url 'add_to_basket' %}" method="POST">
                                 {% csrf_token %}
                                 <input type="hidden" name="product-id" value={{ product.id }}>
+                                <input type="hidden" name="product-slug" value={{ product.slug }}>
                                 <div class="row">
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">

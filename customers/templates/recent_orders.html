@@ -150,7 +150,7 @@
                         {% for product in order.products.all %}
                             <div class="col-6">
                                 <div class="card text-center">
-                                    <a href="{% url 'single_product' product.item.id %}"><img src="/{{ product.item.image.first.image }}" class="card-img-top" alt="product image"></a>
+                                    <a href="{% url 'single_product' product.item.slug %}"><img src="/{{ product.item.image.first.image }}" class="card-img-top" alt="product image"></a>
                                     <div class="card-body">
                                         <h5 class="card-title">{{ product.item.title }}</h5>
                                         <p class="card-text">{{ product.item.description }}</p>

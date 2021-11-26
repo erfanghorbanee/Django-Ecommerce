@@ -97,7 +97,7 @@
           <div class="basket-product">
             <div class="item">
               <div class="product-image">
-                <a href="{% url 'single_product' key.id %}"><img src="/{{ key.image.first.image }}" alt="Product Image" class="product-frame"></a>
+                <a href="{% url 'single_product' key.slug %}"><img src="/{{ key.image.first.image }}" alt="Product Image" class="product-frame"></a>
               </div>
               <div class="product-details">
                 <h1><strong>{{ key.title }}</strong></h1>

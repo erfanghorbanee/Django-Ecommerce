@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from .models import Product, Category
 
@@ -21,8 +21,9 @@ def products_view(request):
     return render(request, 'products/products.html', context)
 
 
-def single_product_view(request, product_id):
-    product = Product.objects.get(pk=product_id)  # to get a single unique object, we use get.
+def single_product_view(request, slug):
+    # product = Product.objects.get(slug=slug)  # to get a single unique object, we use get.
+    product = get_object_or_404(Product, slug=slug)  # to get a single unique object, we use get.
 
     context = {
         'product': product,

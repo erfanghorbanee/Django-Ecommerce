@@ -9,41 +9,84 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=100)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=100)),
             ],
-            options={
-                'verbose_name_plural': 'Categories',
-            },
+            options={"verbose_name_plural": "Categories",},
         ),
         migrations.CreateModel(
-            name='ProductImage',
+            name="ProductImage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('image', models.ImageField(upload_to='static/img/products_image')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                ("image", models.ImageField(upload_to="static/img/products_image")),
             ],
         ),
         migrations.CreateModel(
-            name='Product',
+            name="Product",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=200)),
-                ('price', models.PositiveIntegerField()),
-                ('description', models.TextField(max_length=5000)),
-                ('seller', models.CharField(default='بازار', max_length=200)),
-                ('rate', models.PositiveIntegerField(default=0, validators=[django.core.validators.MaxValueValidator(5), django.core.validators.MinValueValidator(0)])),
-                ('count', models.PositiveIntegerField(blank=True, null=True)),
-                ('status', models.BooleanField(choices=[(False, 'unavailable'), (True, 'available')], default=True)),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='products', to='products.category')),
-                ('image', models.ManyToManyField(to='products.ProductImage')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=200)),
+                ("price", models.PositiveIntegerField()),
+                ("description", models.TextField(max_length=5000)),
+                ("seller", models.CharField(default="بازار", max_length=200)),
+                (
+                    "rate",
+                    models.PositiveIntegerField(
+                        default=0,
+                        validators=[
+                            django.core.validators.MaxValueValidator(5),
+                            django.core.validators.MinValueValidator(0),
+                        ],
+                    ),
+                ),
+                ("count", models.PositiveIntegerField(blank=True, null=True)),
+                (
+                    "status",
+                    models.BooleanField(
+                        choices=[(False, "unavailable"), (True, "available")],
+                        default=True,
+                    ),
+                ),
+                (
+                    "category",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="products",
+                        to="products.category",
+                    ),
+                ),
+                ("image", models.ManyToManyField(to="products.ProductImage")),
             ],
         ),
     ]

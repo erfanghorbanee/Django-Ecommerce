@@ -5,20 +5,23 @@ from products.models import Product, ProductImage, Category
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ['title']
+        fields = ["title"]
 
 
 class ProductImageSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = ProductImage
-        fields = ['id', 'name', 'image', ]
+        fields = [
+            "id",
+            "name",
+            "image",
+        ]
 
 
 class ProductSerializer(serializers.ModelSerializer):
     image = ProductImageSerializer(read_only=True, many=True)
-    category = serializers.CharField(source='category.title')
+    category = serializers.CharField(source="category.title")
 
     class Meta:
         model = Product
-        fields = '__all__'
+        fields = "__all__"

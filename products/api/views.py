@@ -4,12 +4,14 @@ from products.models import Product, Category
 from .serializers import ProductSerializer
 
 
-@api_view(['GET', ])
+@api_view(
+    ["GET",]
+)
 def product_list_view(request):
     paginator = CustomPagination()
     query_set = Product.objects.all()
 
-    category = request.query_params.get('category')
+    category = request.query_params.get("category")
     if category is not None:
         query_set = query_set.filter(category__title=category)
 

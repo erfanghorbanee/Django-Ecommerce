@@ -11,31 +11,82 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('customers', '0001_initial'),
+        ("customers", "0001_initial"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('products', '0001_initial'),
+        ("products", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='OrderItem',
+            name="OrderItem",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('quantity', models.IntegerField(default=1)),
-                ('item', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='products.product')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("quantity", models.IntegerField(default=1)),
+                (
+                    "item",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="products.product",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Order',
+            name="Order",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('total_price', models.PositiveIntegerField()),
-                ('order_date', models.DateTimeField(blank=True, default=django.utils.timezone.now, null=True)),
-                ('ref_code', models.CharField(blank=True, max_length=10, null=True)),
-                ('delivery_status', models.CharField(choices=[('آماده ارسال', 'آماده ارسال'), ('فرستاده شد', 'فرستاده شد'), ('دریافت شد', 'دریافت شد')], default='آماده ارسال', max_length=20)),
-                ('address', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='customers.address')),
-                ('products', models.ManyToManyField(to='orders.OrderItem')),
-                ('user', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("total_price", models.PositiveIntegerField()),
+                (
+                    "order_date",
+                    models.DateTimeField(
+                        blank=True, default=django.utils.timezone.now, null=True
+                    ),
+                ),
+                ("ref_code", models.CharField(blank=True, max_length=10, null=True)),
+                (
+                    "delivery_status",
+                    models.CharField(
+                        choices=[
+                            ("آماده ارسال", "آماده ارسال"),
+                            ("فرستاده شد", "فرستاده شد"),
+                            ("دریافت شد", "دریافت شد"),
+                        ],
+                        default="آماده ارسال",
+                        max_length=20,
+                    ),
+                ),
+                (
+                    "address",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="customers.address",
+                    ),
+                ),
+                ("products", models.ManyToManyField(to="orders.OrderItem")),
+                (
+                    "user",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]

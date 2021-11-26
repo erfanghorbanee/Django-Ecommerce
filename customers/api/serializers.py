@@ -3,8 +3,7 @@ from customers.models import Customer, DiscountCode, Address
 
 try:
     from allauth.account import app_settings as allauth_settings
-    from allauth.utils import (email_address_exists,
-                               get_username_max_length)
+    from allauth.utils import email_address_exists, get_username_max_length
     from allauth.account.adapter import get_adapter
     from allauth.account.utils import setup_user_email
     from allauth.socialaccount.helpers import complete_social_login
@@ -15,10 +14,9 @@ except ImportError:
 
 
 class UserSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Customer
-        fields = ['id', 'email', 'first_name', 'last_name', 'phone', 'gender']
+        fields = ["id", "email", "first_name", "last_name", "phone", "gender"]
 
     def validate_first_name(self, value):
         if not value:
@@ -32,34 +30,41 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class CustomRegisterSerializer(serializers.ModelSerializer):
-    password2 = serializers.CharField(style={'input_type': 'password'}, write_only=True)
+    password2 = serializers.CharField(style={"input_type": "password"}, write_only=True)
 
     class Meta:
         model = Customer
-        fields = ['email', 'first_name', 'last_name',
-                  'password', 'password2', 'phone', 'gender']
-        extra_kwargs = {
-            'password': {
-                'write_only': True
-            }
-        }
+        fields = [
+            "email",
+            "first_name",
+            "last_name",
+            "password",
+            "password2",
+            "phone",
+            "gender",
+        ]
+        extra_kwargs = {"password": {"write_only": True}}
 
     def save(self, request):
         user = Customer(
-            email=self.validated_data['email'],
-            first_name=self.validated_data['first_name'],
-            last_name=self.validated_data['last_name'],
-            phone=self.validated_data['phone']
+            email=self.validated_data["email"],
+            first_name=self.validated_data["first_name"],
+            last_name=self.validated_data["last_name"],
+            phone=self.validated_data["phone"],
         )
 
-        password = self.validated_data['password']
-        password2 = self.validated_data['password2']
+        password = self.validated_data["password"]
+        password2 = self.validated_data["password2"]
 
         if password != password2:
-            raise serializers.ValidationError({'password': 'Passwords must match.'})
+            raise serializers.ValidationError({"password": "Passwords must match."})
         elif len(password) < 8:
-            raise serializers.ValidationError({'password': 'This password is too short. '
-                                                           'It must contain at least 8 characters.'})
+            raise serializers.ValidationError(
+                {
+                    "password": "This password is too short. "
+                    "It must contain at least 8 characters."
+                }
+            )
 
         user.set_password(password)
         user.save()
@@ -67,16 +72,16 @@ class CustomRegisterSerializer(serializers.ModelSerializer):
 
 
 class DiscountCodeSerializer(serializers.ModelSerializer):
-    user = serializers.CharField(source='user.email')
+    user = serializers.CharField(source="user.email")
 
     class Meta:
         model = DiscountCode
-        fields = '__all__'
+        fields = "__all__"
 
 
 class AddressSerializer(serializers.ModelSerializer):
-    user = serializers.CharField(source='user.email')
+    user = serializers.CharField(source="user.email")
 
     class Meta:
         model = Address
-        fields = '__all__'
+        fields = "__all__"

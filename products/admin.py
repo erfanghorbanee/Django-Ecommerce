@@ -17,16 +17,16 @@ class CategoryAdmin(admin.ModelAdmin):
     inlines = [ProductInline]
 
     # Properties in the Category list
-    list_display = ('title',)
+    list_display = ("title",)
 
     # Add filters for state and stars
     # list_filter = ['stars', 'state']
 
     # Make the Category list searchable by title
-    search_fields = ['title']
+    search_fields = ["title"]
 
     # We don't want ids showing up
-    exclude = ('id',)
+    exclude = ("id",)
 
 
 admin.site.register(ProductImage)

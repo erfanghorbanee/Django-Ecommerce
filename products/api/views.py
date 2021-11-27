@@ -7,7 +7,9 @@ from .serializers import ProductSerializer
 
 
 @api_view(
-    ["GET",]
+    [
+        "GET",
+    ]
 )
 def product_list_view(request):
     paginator = CustomPagination()

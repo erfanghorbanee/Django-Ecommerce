@@ -26,7 +26,9 @@ class Migration(migrations.Migration):
                 ),
                 ("title", models.CharField(max_length=100)),
             ],
-            options={"verbose_name_plural": "Categories",},
+            options={
+                "verbose_name_plural": "Categories",
+            },
         ),
         migrations.CreateModel(
             name="ProductImage",

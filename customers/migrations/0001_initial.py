@@ -175,6 +175,8 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"verbose_name_plural": "Addresses",},
+            options={
+                "verbose_name_plural": "Addresses",
+            },
         ),
     ]

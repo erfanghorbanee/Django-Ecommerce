@@ -33,7 +33,9 @@ class Order(models.Model):
         (DELIVERED, "دریافت شد"),
     ]
     delivery_status = models.CharField(
-        max_length=20, choices=status_type, default=READY_TO_DELIVER,
+        max_length=20,
+        choices=status_type,
+        default=READY_TO_DELIVER,
     )
 
     def __str__(self):

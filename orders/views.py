@@ -1,6 +1,6 @@
 import random
 
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 
 from customers.forms import AddressForm
@@ -17,8 +17,8 @@ def basket_view(request):
         product_list = dict()
 
         for item in basket:
-            product = Product.objects.get(
-                pk=item
+            product = get_object_or_404(
+                Product, pk=item
             )  # to get a single unique object, we use get.
             product_list[product] = basket[item]
 
@@ -97,7 +97,7 @@ def delete_address(request, address_id):
 
 def create_order(request):
     if request.user.is_authenticated:
-        address = Address.objects.get(pk=request.POST["address"])
+        address = get_object_or_404(Address, pk=request.POST["address"])
         order_item_list = list()  # products in user basket
         ref_code = random.randrange(1, 10000000)
         total_price = 0

@@ -13,7 +13,9 @@ utc = pytz.UTC
 
 
 @api_view(
-    ["GET",]
+    [
+        "GET",
+    ]
 )
 def discount_code_view(request):
     if request.user.is_authenticated:

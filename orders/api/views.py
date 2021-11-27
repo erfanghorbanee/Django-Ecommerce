@@ -6,7 +6,9 @@ from products.models import Product
 
 
 @api_view(
-    ["POST",]
+    [
+        "POST",
+    ]
 )
 def update_session(request):
     """

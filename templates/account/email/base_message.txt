@@ -1,0 +1,7 @@
+{% load i18n %}{% autoescape off %}{% blocktrans with site_name=current_site.name %}Hello from Django Ecommerce!{% endblocktrans %}
+
+{% block content %}{% endblock %}
+
+{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}Thank you for using our site!
+Alireza Ghorbani{% endblocktrans %}
+{% endautoescape %}

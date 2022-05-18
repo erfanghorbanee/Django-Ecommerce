@@ -12,7 +12,7 @@
 
 #### Clone the repository :
 ```bash
-$ git clone https://github.com/erfanghorbanee/django-ecommerce.git
+$ git clone https://github.com/erfanghorbanee/Django-Ecommerce.git
 $ cd django-ecommerce
 ```
 

@@ -1,7 +1,7 @@
 Django==4.1.6
 django-allauth==0.52.0
 django-phonenumber-field==7.0.2
-django-rest-auth==0.9.5
+dj-rest-auth==2.2.7
 djangorestframework==3.14.0
 django-bootstrap4==22.3
 phonenumbers==8.13.5

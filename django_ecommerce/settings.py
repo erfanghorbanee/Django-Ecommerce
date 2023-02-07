@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "django.contrib.sites",
     "django.contrib.staticfiles",
     "products",
     "customers",
@@ -43,11 +44,12 @@ INSTALLED_APPS = [
     "phonenumber_field",
     "rest_framework",
     "rest_framework.authtoken",
-    "rest_auth",
-    "django.contrib.sites",
+    "dj_rest_auth",
+    "dj_rest_auth.registration",
     "allauth",
     "allauth.account",
-    "rest_auth.registration",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.google",
     "bootstrap4",
 ]
 

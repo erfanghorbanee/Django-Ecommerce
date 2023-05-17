@@ -1,3 +1,4 @@
+black==23.3.0
 Django==4.1.6
 django-allauth==0.52.0
 django-phonenumber-field==7.0.2
@@ -7,3 +8,4 @@ django-bootstrap4==22.3
 phonenumbers==8.13.5
 Pillow==9.4.0
 psycopg2-binary==2.9.5
+isort==5.12.0

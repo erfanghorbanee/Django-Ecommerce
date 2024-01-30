@@ -1,5 +1,5 @@
 black==23.3.0
-Django==4.1.6
+Django==4.1.13
 django-allauth==0.52.0
 django-phonenumber-field==7.0.2
 dj-rest-auth==2.2.7

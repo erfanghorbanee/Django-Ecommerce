@@ -10,33 +10,38 @@ An e-commerce website using  the following tech stacks: Python - Django - Postgr
 
 ## How run the project?
 
+### Clone the repository
 
-#### Clone the repository :
 ```bash
-$ git clone https://github.com/erfanghorbanee/Django-Ecommerce.git
-$ cd django-ecommerce
+git clone https://github.com/erfanghorbanee/Django-Ecommerce.git
+cd django-ecommerce
 ```
 
-#### Create a virtualenv and activate it:
+### Create a virtualenv and activate it
+
  ```bash
-$ python3 -m venv venv
-$ . venv/bin/activate
+python3 -m venv venv
+. venv/bin/activate
 ```
 
-#### Or on Windows cmd : 
+### Or on Windows cmd
+
  ```bash
 > py -3 -m venv venv
 > venv\Scripts\activate.bat
 ```
 
-#### Install the requirements :
+### Install the requirements
+
 ```bash
-$ pip3 install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
-#### In settings.py, set up the database :
+#### In settings.py, set up the database
+
 for this project i used postgress, you can see the following settings below :
-```
+
+```python
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -49,20 +54,23 @@ DATABASES = {
 }
 ```
 
-####  Run makemigrations and migrate :
+#### Run makemigrations and migrate
+
 ```bash
 python3 manage.py makemigrations
 python3 manage.py migrate
 ```
 
-#### Run the tests :
+#### Run the tests
+
 ```bash
 python3 manage.py test
 ```
 
-#### Run the development server :
+#### Run the development server
+
 ```bash
 python3 manage.py runserver
 ```
 
-Open http://127.0.0.1:8000 in your browser. 
+Open <http://127.0.0.1:8000> in your browser.

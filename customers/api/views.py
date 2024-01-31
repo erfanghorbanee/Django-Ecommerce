@@ -19,7 +19,6 @@ utc = pytz.UTC
 )
 def discount_code_view(request):
     if request.user.is_authenticated:
-
         code = request.query_params.get("code")
         if code is not None:
             query_set = DiscountCode.objects.all().filter(user=request.user, code=code)

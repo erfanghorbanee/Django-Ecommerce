@@ -1,7 +1,7 @@
 from rest_framework.decorators import api_view
 
 from django_ecommerce.pagination import CustomPagination
-from products.models import Category, Product
+from products.models import Product
 
 from .serializers import ProductSerializer
 

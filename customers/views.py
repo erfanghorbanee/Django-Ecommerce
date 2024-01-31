@@ -1,4 +1,4 @@
-from datetime import date, datetime, timedelta
+from datetime import datetime, timedelta
 
 from django.shortcuts import redirect, render
 from django.urls import reverse
@@ -10,7 +10,6 @@ from .forms import DetailForm
 
 def profile_view(request):
     if request.user.is_authenticated:
-
         form = DetailForm(instance=request.user)
 
         context = {
@@ -23,7 +22,6 @@ def profile_view(request):
 
 def orders_history_view(request):
     if request.user.is_authenticated:
-
         orders = Order.objects.filter(user__email=request.user).all()
 
         context = {
@@ -36,7 +34,6 @@ def orders_history_view(request):
 
 def recent_orders_view(request):
     if request.user.is_authenticated:
-
         # orders in past 10 days
         recent_orders = Order.objects.filter(
             order_date__range=(datetime.now() - timedelta(days=10), datetime.now()),

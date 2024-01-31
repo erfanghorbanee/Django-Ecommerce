@@ -11,7 +11,6 @@ from products.models import Product
 
 def basket_view(request):
     if request.session.get("basket"):
-
         basket = request.session.get("basket")
         total = 0  # total price
         product_list = dict()
@@ -56,7 +55,6 @@ def add_to_basket(request):
 
 
 def delete_from_basket(request, product_id):
-
     basket = request.session.get("basket")
     basket.pop(str(product_id))
     request.session.modified = True
@@ -86,7 +84,6 @@ def checkout(request):
 
 def delete_address(request, address_id):
     if request.user.is_authenticated:
-
         address = Address.objects.filter(pk=address_id)
         address.delete()
 

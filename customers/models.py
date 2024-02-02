@@ -1,8 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.core.exceptions import ValidationError
 from django.db import models
-
-# from django.utils.translation import ugettext_lazy as _
 from phonenumber_field.modelfields import PhoneNumberField
 
 from .managers import CustomUserManager
@@ -10,10 +8,10 @@ from .managers import CustomUserManager
 
 def validate_only_one_instance(obj):
     model = obj.__class__
-    print(obj.user)
-    if model.objects.filter(user=obj.user).count() > 1:
+    user = obj.user
+    if model.objects.filter(user=user).exists():
         raise ValidationError(
-            "Can only create 2 %s instance with same user" % model.__name__
+            f"Can only create one instance of {model.__name__} with the same user"
         )
 
 

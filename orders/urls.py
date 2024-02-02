@@ -1,14 +1,8 @@
 from django.urls import path
 
 from .api.views import update_session
-from .views import (
-    add_to_basket,
-    basket_view,
-    checkout,
-    create_order,
-    delete_address,
-    delete_from_basket,
-)
+from .views import (add_to_basket, basket_view, checkout, create_order,
+                    delete_address, delete_from_basket)
 
 urlpatterns = [
     path("basket/", basket_view, name="basket"),

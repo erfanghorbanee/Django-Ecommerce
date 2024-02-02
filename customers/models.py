@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.core.exceptions import ValidationError
-from django.core.validators import FileExtensionValidator, FileSizeValidator
+from django.core.validators import FileExtensionValidator
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
@@ -14,6 +14,12 @@ def validate_only_one_instance(obj):
         raise ValidationError(
             f"Can only create one instance of {model.__name__} with the same user"
         )
+    
+def validate_image_size(image):
+    file_size = image.file.size
+    limit_mb = 2
+    if file_size > limit_mb * 1024 * 1024:
+        raise ValidationError(f"Max size of file is {limit_mb} MB")
 
 
 class Customer(AbstractUser):
@@ -32,7 +38,7 @@ class Customer(AbstractUser):
         upload_to="profile_pics/",
         validators=[
             FileExtensionValidator(["jpg", "jpeg", "png"]),
-            FileSizeValidator(max_size=2 * 1024 * 1024),  # 2 MB limit
+            validate_image_size,
         ],
         null=True,
         blank=True,

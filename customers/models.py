@@ -20,10 +20,9 @@ class Customer(AbstractUser):
     email = models.EmailField(("email address"), unique=True)
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = [
-        "first_name",
-        "last_name",
-    ]  # will be required when creating a superuser.
+
+    # will be required when creating a superuser.
+    REQUIRED_FIELDS = ["first_name", "last_name"]
 
     objects = CustomUserManager()
 

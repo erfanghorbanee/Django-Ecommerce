@@ -1,11 +1,24 @@
-black==24.1.1
+# Django and Core Dependencies
 Django==5.0.1
-django-allauth==0.60.1
-django-phonenumber-field==7.3.0
-dj-rest-auth==5.0.2
 djangorestframework==3.14.0
-django-bootstrap4==24.1
-phonenumbers==8.13.29
-Pillow==10.2.0
+
+# Authentication and Authorization
+django-allauth==0.60.1
+dj-rest-auth==5.0.2
+
+# Database
 psycopg2-binary==2.9.9
+
+# Formatting
+black==24.1.1
 isort==5.13.2
+
+# Phone Number Handling
+django-phonenumber-field==7.3.0
+phonenumbers==8.13.29
+
+# Image Handling
+Pillow==10.2.0
+
+# Frontend and UI Enhancements
+django-bootstrap4==24.1

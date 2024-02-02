@@ -20,17 +20,31 @@ class Customer(AbstractUser):
     email = models.EmailField(("email address"), unique=True)
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = [
+        "first_name",
+        "last_name",
+    ]  # will be required when creating a superuser.
 
     objects = CustomUserManager()
 
     phone = PhoneNumberField(null=False, blank=False)
 
-    MALE = False
-    FEMALE = True
-    gender_type = ((MALE, "مرد"), (FEMALE, "زن"))
-    gender = models.BooleanField(
-        default=True, choices=gender_type, null=False, blank=False
+    MALE = "M"
+    FEMALE = "F"
+    OTHER = "O"
+    PREFER_NOT_TO_SAY = "X"
+
+    GENDER_CHOICES = [
+        (MALE, "Male"),
+        (FEMALE, "Female"),
+        (OTHER, "Other"),
+        (PREFER_NOT_TO_SAY, "Prefer not to say"),
+    ]
+
+    gender = models.CharField(
+        max_length=1,
+        choices=GENDER_CHOICES,
+        default=PREFER_NOT_TO_SAY,
     )
 
     def __str__(self):

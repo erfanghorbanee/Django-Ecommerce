@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.core.exceptions import ValidationError
+from django.core.validators import FileExtensionValidator, FileSizeValidator
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
@@ -18,15 +19,24 @@ def validate_only_one_instance(obj):
 class Customer(AbstractUser):
     username = None
     email = models.EmailField(("email address"), unique=True)
-
     USERNAME_FIELD = "email"
 
     # will be required when creating a superuser.
     REQUIRED_FIELDS = ["first_name", "last_name"]
 
     objects = CustomUserManager()
-
     phone = PhoneNumberField(null=False, blank=False)
+
+    # TODO: Process image before saving
+    profile_picture = models.ImageField(
+        upload_to="profile_pics/",
+        validators=[
+            FileExtensionValidator(["jpg", "jpeg", "png"]),
+            FileSizeValidator(max_size=2 * 1024 * 1024),  # 2 MB limit
+        ],
+        null=True,
+        blank=True,
+    )
 
     MALE = "M"
     FEMALE = "F"

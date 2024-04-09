@@ -10,7 +10,7 @@ dj-rest-auth==5.0.2
 psycopg2-binary==2.9.9
 
 # Formatting
-black==24.1.1
+black==24.3.0
 isort==5.13.2
 
 # Phone Number Handling

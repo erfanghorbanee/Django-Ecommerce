@@ -13,7 +13,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
@@ -25,3 +26,7 @@ jobs:
     - name: Run Tests
       run: |
         python manage.py test
+    - name: Secret Scanning
+      uses: trufflesecurity/trufflehog@main
+      # with:
+      #   extra_args: --only-verified

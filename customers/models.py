@@ -14,7 +14,8 @@ def validate_only_one_instance(obj):
         raise ValidationError(
             f"Can only create one instance of {model.__name__} with the same user"
         )
-    
+
+
 def validate_image_size(image):
     file_size = image.file.size
     limit_mb = 2

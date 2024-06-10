@@ -2,82 +2,121 @@
 {% load static %}
 {% load bootstrap4 %}
 {% bootstrap_css %}
-{% bootstrap_javascript jquery='full' %}
+
 {% bootstrap_messages %}
 
 {% block title %}Signup{% endblock %}
 
 {% block style %}
-   body {
-        background-color: #F5F5F5;
-    }
+body {
+    background-color: #F5F5F5;
+}
 
-    .content {
-        text-align: center;
-    }
+.content {
+    text-align: center;
+    padding: 20px;
+}
 
-    input {
-        margin-bottom:20px;
-        }
+.signup-container {
+    max-width: 500px;
+    margin: auto;
+}
 
-    form {
-        display: inline-block;
-    }
+.signup {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
 
-    a {
-        font-size: 14px;
-        color: #666666;
-    }
+input, .btn {
+    margin-bottom: 20px;
+    width: 100%;
+}
 
-    a:focus {
-        outline: none !important;
-    }
+a {
+    font-size: 14px;
+    color: #666666;
+}
 
-    a:hover {
-        text-decoration: none;
-        color: #333333;
-    }
+a:focus {
+    outline: none !important;
+}
 
-    h1 {
-        margin-top: 20px;
-        margin-bottom: 20px;
-        }
+a:hover {
+    text-decoration: none;
+    color: #333333;
+}
 
-    button {
-        margin-top: 15px;
-    }
+h1 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 
-    #id_gender {
-        margin-bottom: 15px;
-    }
+.navbar-custom {
+    background-color: #212934;
+}
+
+.navbar-custom a {
+    color: #fff;
+}
+
+.navbar-custom a:hover {
+    color: #ffc107;
+}
+
+footer {
+    background-color: #212934;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer a {
+    color: #ffc107;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
 {% endblock %}
 
 {% block header %}
-    <a style="text-align: right; margin-right: 10px; padding-top: 10px;" href="{% url 'home' %}">بازگشت به صفحه اصلی</a>
+<nav class="navbar navbar-expand-md navbar-dark navbar-custom">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home' %}">بازگشت به صفحه اصلی</a>
+  </div>
+</nav>
 {% endblock %}
 
 {% block content %}
 <div class="content">
-<h1>ثبت نام</h1>
+    <h1>ثبت نام</h1>
+    <div class="signup-container">
+        <form class="signup" dir="rtl" id="signup_form" method="post" action="{% url 'rest_register' %}">
+            {% csrf_token %}
+            {% bootstrap_form form %}
 
-<form class="signup" dir="rtl" id="signup_form" method="post" action="{% url 'rest_register' %}">
-  {% csrf_token %}
-  {% bootstrap_form form %}
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
 
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-
-{% buttons %}
-  <button class="btn btn-dark" type="submit">ثبت نام</button>
-{% endbuttons %}
-    <br>
-<p><a href="{{ login_url }}">قبلا عضو شده‌اید؟ رفتن به صفحه ورود</a></p>
-</form>
-
-    <ul id="talk">
-    </ul>
+            {% buttons %}
+              <button class="btn btn-dark" type="submit">ثبت نام</button>
+            {% endbuttons %}
+            <br>
+            <p><a href="{% url 'account_login' %}">قبلا عضو شده‌اید؟ رفتن به صفحه ورود</a></p>
+        </form>
+    </div>
 </div>
 {% endblock %}
 
-{% block js %}<script src="{% static 'js/signup.js' %}"></script>{% endblock %}
+{% block js %}
+<script src="{% static 'js/signup.js' %}"></script>
+<script>
+  $(document).ready(function(){
+    // Add custom client-side validation here if needed
+  });
+</script>
+{% endblock %}

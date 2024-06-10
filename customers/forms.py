@@ -6,17 +6,15 @@ from .models import Address, Customer
 
 
 class CustomSignupForm(SignupForm):
-    first_name = forms.CharField(max_length=20)
-    last_name = forms.CharField(max_length=20)
-    phone = forms.CharField(max_length=15)
+    first_name = forms.CharField(max_length=30, label="نام")
+    last_name = forms.CharField(max_length=30, label="نام خانوادگی")
+    phone = forms.CharField(max_length=15, label=" شماره تماس")
+    gender = forms.ChoiceField(choices=Customer.GENDER_CHOICES, label="جنسیت")
 
     def __init__(self, *args, **kwargs):
         super(CustomSignupForm, self).__init__(*args, **kwargs)
         self.fields["email"].label = "ایمیل"
-        self.fields["first_name"].label = "نام"
-        self.fields["last_name"].label = "نام خانوادگی"
-        self.fields["phone"].label = "شماره تماس"
-        # self.fields['gender'].label = 'جنسیت'
+        self.fields["gender"].label = "جنسیت"
         self.fields["password1"].label = "رمز عبور"
         self.fields["password2"].label = "تکرار رمز عبور"
 
@@ -27,10 +25,12 @@ class CustomSignupForm(SignupForm):
             {"placeholder": "+98xxxxxxxxxx", "dir": "ltr"}
         )
 
-    def signup(self, request, user):
+    def save(self, request):
+        user = super(CustomSignupForm, self).save(request)
         user.first_name = self.cleaned_data["first_name"]
         user.last_name = self.cleaned_data["last_name"]
         user.phone = self.cleaned_data["phone"]
+        user.gender = self.cleaned_data["gender"]
         user.save()
         return user
 

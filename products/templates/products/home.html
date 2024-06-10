@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block header %}{% endblock %}
 
 {% block Bootstrap %}
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel-rtl/">
     <link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet" integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
-
     <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/docs/5.0/examples/carousel/carousel.rtl.css" rel="stylesheet">
 {% endblock %}
-
 
 {% block style %}
     .bd-placeholder-img {
@@ -25,7 +24,7 @@
         }
       }
 
-    .dropdown-item text-danger {
+    .dropdown-item.text-danger {
         background: none!important;
         border: none;
         padding: 0!important;
@@ -52,7 +51,6 @@
 {% endblock %}
 
 {% block content %}
-
 <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top navbar-custom">
     <div class="container-fluid">
@@ -65,15 +63,13 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'products' %}">فروشگاه</a>
           </li>
-
           <li class="nav-item">
               <a class="nav-link" href="#">درباره ما</a>
           </li>
-
         </ul>
 
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="جستجو" aria-label="جستجو">
+        <form class="d-flex" method="GET" action="">
+            <input id="search" name="search" class="form-control me-2" type="search" placeholder="جستجو" aria-label="جستجو">
             <button class="btn btn-outline-primary" type="submit">جستجو</button>
           </form>
 
@@ -85,17 +81,16 @@
 
         {% if user.is_authenticated %}
           <div class="dropstart">
-                <a class="btn  dropdown" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img class="Avatar " alt="Avatar " src="static/img/profile.png">
+            <a class="btn dropdown" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <img class="Avatar" alt="Avatar" src="{% static 'img/profile.png' %}">
                 </a>
-
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <li>
                         <p class="dropdown-header"><b>{{ user }}</b></p>
                     </li>
-                    <li><a class="dropdown-item " href="{% url 'profile' %}">حساب شخصی</a></li>
+              <li><a class="dropdown-item" href="{% url 'profile' %}">حساب شخصی</a></li>
                     <li>
-                        <hr class="dropdown-divider ">
+                <hr class="dropdown-divider">
                     </li>
                     <li>
                         <form method="post" action="{% url 'account_logout' %}">
@@ -106,20 +101,17 @@
                           <button class="dropdown-item text-danger" type="submit">خروج</button>
                         </form>
                     </li>
-
                 </ul>
             </div>
-          {% else %}
+        {% else %}
             <a class="login link-light" href="{% url 'account_login' %}">ورود</a>
-          {% endif %}
-
+        {% endif %}
       </div>
     </div>
   </nav>
 </header>
 
 <main>
-
   <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -128,29 +120,27 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="static/img/home/email.jpg" alt="image" style="width: 100%; height: 100%;">
-
+        <img src="{% static 'img/home/email.jpg' %}" alt="image" style="width: 100%; height: 100%;">
         <div class="container">
-          <div class="carousel-caption text-start text-dark">
+          <div class="carousel-caption text-start">
             <h1>اطلاع رسانی</h1>
             <p>برای دریافت اخبار جدید ترین محصولات کلیک کنید.</p>
           </div>
         </div>
       </div>
       <div class="carousel-item">
-       <img src="static/img/home/banner.jpg" alt="image" style="width: 100%; height: 100%;">
-
+        <img src="{% static 'img/home/banner.jpg' %}" alt="image" style="width: 100%; height: 100%;">
         <div class="container">
           <div class="carousel-caption">
-            <h1></h1>
-            <p></p>
+            <h1>لوازم تحریر</h1>
+            <p>برای سال تحصیلی آماده شوید!</p>
           </div>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="static/img/home/Books-Banner.jpg" alt="Books-Banner" style="width: 100%; height: 100%;">
+        <img src="{% static 'img/home/Books-Banner.jpg' %}" alt="Books-Banner" style="width: 100%; height: 100%;">
         <div class="container">
-          <div class="carousel-caption text-start text">
+          <div class="carousel-caption text-start">
             <h1>محبوب ترین کتاب ها</h1>
           </div>
         </div>
@@ -166,43 +156,31 @@
     </button>
   </div>
 
-
-  <!-- Marketing messaging and featurettes
-  ================================================== -->
-  <!-- Wrap the rest of the page in another container to center all the content. -->
-
+  <!-- Marketing messaging and featurettes -->
   <div class="container marketing">
-
-    <!-- Three columns of text below the carousel -->
     <div class="row">
       <div class="col-lg-4">
         <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-
         <h2>محصول اول</h2>
         <p>توضیحات</p>
         <p><a class="btn btn-secondary" href="#">مشاهده</a></p>
       </div>
       <div class="col-lg-4">
         <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-
         <h2>محصول دوم</h2>
         <p>توضیحات</p>
         <p><a class="btn btn-secondary" href="#">مشاهده</a></p>
       </div>
       <div class="col-lg-4">
         <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-
         <h2>محصول سوم</h2>
         <p>توضیحات</p>
         <p><a class="btn btn-secondary" href="#">مشاهده</a></p>
       </div>
     </div>
 
-
     <!-- START THE FEATURETTES -->
-
     <hr class="featurette-divider">
-
     <div class="row featurette">
       <div class="col-md-4">
         <h2 class="featurette-heading">خرید آسان</h2>
@@ -210,12 +188,11 @@
         <p class="lead"> در دوران قرنظینه از بیرون رفتن بیهوده صرف نظر کنید و خرید های خود را به ما بسپارید. تنها با یک کلیک محصولات مورد علاقه خود را سفارش دهید!</p>
       </div>
       <div class="col-md-8">
-        <img src="static/img/home/1.png" alt="image" style="width: 860px; height: 500px;">
+        <img src="{% static 'img/home/1.png' %}" alt="image" style="width: 860px; height: 500px;">
       </div>
     </div>
 
     <hr class="featurette-divider">
-
     <div class="row featurette">
       <div class="col-md-3 order-md-2">
         <h2 class="featurette-heading">تنوع محصولات</h2>
@@ -223,12 +200,11 @@
         <p class="lead">از پوشاک و خوراک گرفته تا لپ تاپ و کتاب، همه و همه تو بازار پیدا میشه. جدید ترین محصولات روز با تخفیفای باور نکردنی!!</p>
       </div>
       <div class="col-md-9 order-md-1">
-        <img src="static/img/home/2.jpg" alt="image" style="width: 900px; height: 500px;">
+        <img src="{% static 'img/home/2.jpg' %}" alt="image" style="width: 900px; height: 500px;">
       </div>
     </div>
 
     <hr class="featurette-divider">
-
     <div class="row featurette">
       <div class="col-md-4">
         <h2 class="featurette-heading">امنیت</h2>
@@ -236,16 +212,13 @@
         <p class="lead">بازار تمام تلاشش رو کرده تا اطلاعات کاربرانش در امان باشه، با این وجود اگر هنوز هم به خرید های اینترنتی اعتماد نداری یا نگرانی اطلاعاتت به سرقت بره روی عکس کلیک کن!</p>
       </div>
       <div class="col-md-8">
-        <a href="https://separex.ir/blog/%D8%B1%D8%A7%D9%87%DA%A9%D8%A7%D8%B1%D9%87%D8%A7%DB%8C-%D8%AE%D8%B1%DB%8C%D8%AF-%D8%A7%D9%85%D9%86-%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86/"><img src="/static/img/home/3.jpg/" alt="image" style="width: 860px; height: 500px;"></a>
+        <a href="https://separex.ir/blog/%D8%B1%D8%A7%D9%87%DA%A9%D8%A7%D8%B1%D9%87%D8%A7%DB%8C-%D8%AE%D8%B1%DB%8C%D8%AF-%D8%A7%D9%85%D9%86-%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86/"><img src="{% static 'img/home/3.jpg' %}" alt="image" style="width: 860px; height: 500px;"></a>
       </div>
     </div>
 
     <hr class="featurette-divider">
-
     <!-- /END THE FEATURETTES -->
-
   </div><!-- /.container -->
-
 
   <!-- FOOTER -->
   <footer class="container">
@@ -253,5 +226,4 @@
     <p> 2021–2020 &copy;  حقوق مطالب، تصاویر و طرح قالب برای سایت بازار محفوظ است.</p>
   </footer>
 </main>
-
 {% endblock %}

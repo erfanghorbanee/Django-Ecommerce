@@ -5,9 +5,9 @@ from .models import Category, Product
 
 def home_view(request):
     if request.user.is_authenticated:
-        print("user is authenticated as", request.user)
+        print("User is authenticated as", request.user)
     else:
-        print("user is not authenticated")
+        print("User is not authenticated")
 
     return render(request, "products/home.html")
 

@@ -11,20 +11,6 @@ class CustomSignupForm(SignupForm):
     phone = forms.CharField(max_length=15, label=" شماره تماس")
     gender = forms.ChoiceField(choices=Customer.GENDER_CHOICES, label="جنسیت")
 
-    def __init__(self, *args, **kwargs):
-        super(CustomSignupForm, self).__init__(*args, **kwargs)
-        self.fields["email"].label = "ایمیل"
-        self.fields["gender"].label = "جنسیت"
-        self.fields["password1"].label = "رمز عبور"
-        self.fields["password2"].label = "تکرار رمز عبور"
-
-        self.fields["email"].widget.attrs.update({"dir": "ltr"})
-        self.fields["password1"].widget.attrs.update({"placeholder": "رمز عبور"})
-        self.fields["password2"].widget.attrs.update({"placeholder": "تکرار رمز عبور"})
-        self.fields["phone"].widget.attrs.update(
-            {"placeholder": "+98xxxxxxxxxx", "dir": "ltr"}
-        )
-
     def save(self, request):
         user = super(CustomSignupForm, self).save(request)
         user.first_name = self.cleaned_data["first_name"]

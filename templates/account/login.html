@@ -7,69 +7,108 @@
 {% block title %}Sign In{% endblock %}
 
 {% block style %}
-    body {
-        background-color: #F5F5F5;
-    }
+body {
+    background-color: #F5F5F5;
+}
 
-    .content {
-        text-align: center;
-    }
+.content {
+    text-align: center;
+    padding: 20px;
+}
 
-    input {
-        margin-bottom:20px;
-        }
+.signin-container {
+    max-width: 500px;
+    margin: auto;
+}
 
-    form {
-        display: inline-block;
-    }
+.signin {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
 
-    a {
-        font-size: 14px;
-        color: #666666;
-    }
+input, .btn {
+    margin-bottom: 20px;
+    width: 100%;
+}
 
-    a:focus {
-        outline: none !important;
-    }
+a {
+    font-size: 14px;
+    color: #666666;
+}
 
-    a:hover {
-        text-decoration: none;
-        color: #333333;
-    }
+a:focus {
+    outline: none !important;
+}
 
-    h1 {
-        margin: 50px;
-        }
+a:hover {
+    text-decoration: none;
+    color: #333333;
+}
 
-    button {
-        margin-top: 15px;
-    }
+h1 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 
+.navbar-custom {
+    background-color: #212934;
+}
+
+.navbar-custom a {
+    color: #fff;
+}
+
+.navbar-custom a:hover {
+    color: #ffc107;
+}
+
+footer {
+    background-color: #212934;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer a {
+    color: #ffc107;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
 {% endblock %}
 
 {% block header %}
-    <a style="text-align: right; margin-right: 10px; padding-top: 10px;" href="{% url 'home' %}">بازگشت به صفحه اصلی</a>
+<nav class="navbar navbar-expand-md navbar-dark navbar-custom">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home' %}">بازگشت به صفحه اصلی</a>
+  </div>
+</nav>
 {% endblock %}
 
 {% block content %}
 <div class="content">
-<h1>ورود به حساب کاربری</h1>
+    <h1>ورود به حساب کاربری</h1>
+    <div class="signin-container">
+        <form class="signin" method="POST" action="{% url 'account_login' %}">
+            {% csrf_token %}
+            {% bootstrap_form form %}
 
-<form class="login align" dir="ltr" method="POST" action="{% url 'account_login' %}">
-  {% csrf_token %}
-  {% bootstrap_form form %}
+            {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
 
-  {% if redirect_field_value %}
-     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-
-{% buttons %}
-  <button class="primaryAction btn btn-dark" type="submit">ورود</button>
-{% endbuttons %}
-    <br>
-  <a class="button secondaryAction" href="{% url 'account_reset_password' %}">فراموشی رمز عبور</a>
-    <br>
-  <a class="button secondaryAction" href="{% url 'account_signup' %}">عضو نیستید؟ ثبت نام کنید</a>
-</form>
+            {% buttons %}
+              <button class="btn btn-dark" type="submit">ورود</button>
+            {% endbuttons %}
+            <br>
+            <a href="{% url 'account_reset_password' %}">فراموشی رمز عبور</a>
+            <br>
+            <a href="{% url 'account_signup' %}">عضو نیستید؟ ثبت نام کنید</a>
+        </form>
+    </div>
 </div>
 {% endblock %}
